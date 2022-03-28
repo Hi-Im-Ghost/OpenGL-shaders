@@ -20,6 +20,30 @@ using namespace glm;
 #include <iostream>
 #include <fstream>
 
+struct Vertex
+{
+    glm::vec3 position;
+    glm::vec3 color;
+    //Współrzędne tekstury
+    glm::vec2 texcoord;
+};
+
+Vertex vertices[]=
+{
+        //Position                           //Color                           //Textcoords
+        glm::vec3(0.0f,0.5f,0.f),   glm::vec3(1.f,0.f,0.f),   glm::vec2(0.f,1.f),
+        glm::vec3(-0.5f,-0.5f,0.f), glm::vec3(0.f,1.f,0.f),   glm::vec2(0.f,1.f),
+        glm::vec3(0.5f,-0.5f,0.f),  glm::vec3(0.f,0.f,1.f),   glm::vec2(0.f,1.f)
+};
+unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
+
+//Indeksy do określania przy rysowaniu które wierzchołki użyć by nie było duplikatów
+GLuint  indices[] =
+{
+    0, 1, 2
+};
+unsigned nrOfIndices = sizeof(indices)/sizeof(GLuint);
+
 //Zmiana rozmiaru okna
 void resize(GLFWwindow *,int W, int H)
 {
@@ -205,6 +229,39 @@ int main( void )
         glfwTerminate();
     }
 
+    //BUFORY VAO,VBO,EBO
+    GLuint VAO;
+    glCreateVertexArrays(1,&VAO);
+    //Aktywacja do przechowywania w danym buforze wszystkich rzeczy
+    glBindVertexArray(VAO);
+
+    //Tworzenie miejsca dla buforów i dodawanie danych
+    GLuint VBO;
+    glGenBuffers(1,&VBO);
+    glBindBuffer(GL_ARRAY_BUFFER,VBO);
+    //Dane wysyłane do GPU
+    glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices,GL_STATIC_DRAW); //STATIC jesli nie zmieniamy obiektow ktore rysujemy
+    //Do indeksowania
+    GLuint EBO;
+    glGenBuffers(1,&EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices),indices,GL_STATIC_DRAW);
+
+    //POSITION
+    //Jak będziemy używać danych wejściowych
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,position));
+    //Włączenie tablicy wierzchołków
+    glEnableVertexAttribArray(0);
+
+    //COLOR
+    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,color));
+    glEnableVertexAttribArray(1);
+
+    //TEXCOORD
+    glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,texcoord));
+    glEnableVertexAttribArray(12);
+    //Odłączenie tablicy wierzechołków
+    glBindVertexArray(0);
     //MAIN LOOP
     while(!glfwWindowShouldClose(window))
     {
@@ -220,12 +277,22 @@ int main( void )
         //Czyszczenie buforwa koloru, szablonu i głębokości
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
+
         //DRAW
+        glUseProgram(core);
+        //Znajdowanie tablicy wierzechołków
+        glBindVertexArray(VAO);
+        //Narysuj element
+        //glDrawArrays(GL_TRIANGLES, 0, nrOfVertices);
+        glDrawElements(GL_TRIANGLES,nrOfIndices,GL_UNSIGNED_INT,0);
 
         //END
         //Zmiana bufforów i opróźnianie
         glfwSwapBuffers(window);
         glFlush();
+
+        glBindVertexArray(0);
+        glUseProgram(0);
     }
 
     //Niszczenie okna
