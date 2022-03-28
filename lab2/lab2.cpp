@@ -17,6 +17,121 @@ using namespace glm;
 #include <common/shader.hpp>
 #include <common/texture.hpp>
 #include <common/controls.hpp>
+#include <iostream>
+#include <fstream>
+
+//Zmiana rozmiaru okna
+void resize(GLFWwindow *,int W, int H)
+{
+    glViewport(0,0,W,H);
+}
+
+bool shaderLoader(GLuint &program)
+{
+    bool load = true;
+    //Tworzenie konsoli dla shaderow
+    char log[512];
+    GLint success;
+
+    //Zmienna przechowujaca tekst
+    std::string temp = "";
+    //Zmienna do przechowywania ścieżki
+    std::string src = "";
+    std::ifstream file;
+
+    //VERTEX
+    file.open("TransformVertexShader.vertexshader");
+    //Czytanie pliku
+    if(file.is_open())
+    {
+        while(std::getline(file,temp))
+            src += temp + "\n";
+    }else {
+        std::cout << "ERROR::LAB2::VERTEX_SHADER_LOADER" << "\n";
+        load = false;
+    }
+
+    file.close();
+
+    //Tworzenie vertex shadera w pamieci OpenGL i zwrócenie ID tego shadera
+    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    //Ustawienie odpowiedniego formatu
+    const GLchar* vert = src.c_str();
+    //Ustawiamy źródło shadera
+    glShaderSource(vertexShader,1,&vert,NULL);
+    //Kompilacja
+    glCompileShader(vertexShader);
+    //Sprawdzanie stanu kompilacji
+    glGetShaderiv(vertexShader,GL_COMPILE_STATUS, &success);
+    if(!success)
+    {
+        glGetShaderInfoLog(vertexShader,512,NULL,log);
+        std::cout <<"ERROR::LAB2::VERTEX_SHADER FILE ERROR" << "\n";
+        std::cout << log << "\n";
+        load = false;
+    }
+
+    //Czyszczenie
+    temp="";
+    src="";
+
+    //FRAGMENT
+    file.open("TextureFragmentShader.fragmentshader");
+    //Czytanie pliku
+    if(file.is_open())
+    {
+        while(std::getline(file,temp))
+            src += temp + "\n";
+    }else {
+        std::cout << "ERROR::LAB2::FRAGMENT_SHADER_LOADER" << "\n";
+        load = false;
+    }
+
+    file.close();
+
+    //Tworzenie vertex shadera w pamieci OpenGL i zwrócenie ID tego shadera
+    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    //Ustawienie odpowiedniego formatu
+    const GLchar* fragment = src.c_str();
+    //Ustawiamy źródło shadera
+    glShaderSource(fragmentShader,1,&fragment,NULL);
+    //Kompilacja
+    glCompileShader(fragmentShader);
+    //Sprawdzanie stanu kompilacji
+    glGetShaderiv(fragmentShader,GL_COMPILE_STATUS, &success);
+    if(!success)
+    {
+        glGetShaderInfoLog(fragmentShader,512,NULL,log);
+        std::cout <<"ERROR::LAB2::FRAGMENT_SHADER_LOADER FILE ERROR" << "\n";
+        std::cout << log << "\n";
+        load = false;
+    }
+
+    //PROGRAM
+    program = glCreateProgram();
+    //dołączanie do programu shaderów
+    glAttachShader(program,vertexShader);
+    glAttachShader(program,fragmentShader);
+    glLinkProgram(program);
+    //Sprawdzanie kompilacji
+    glGetProgramiv(program,GL_LINK_STATUS,&success);
+    if(!success)
+    {
+        glGetProgramInfoLog(program,512,NULL,log);
+        std::cout <<"ERROR::LAB2::PROGRAM_SHADER_LOADER FILE ERROR" << "\n";
+        std::cout << log << "\n";
+        load = false;
+    }
+
+    //END
+    //Restowanie programu
+    glUseProgram(0);
+    //Nie potrzebujemy inwidualnych shaderow poniewaz zostaja zlaczone w 1 program
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
+
+    return load;
+}
 
 int main( void )
 {
@@ -27,231 +142,75 @@ int main( void )
 		getchar();
 		return -1;
 	}
+    //Incjalizacja zmiennych dla okna
+    const int WINDOW_WIDTH = 640;
+    const int WINDOW_HEIGT = 480;
+    int framebufferwidth = 0;
+    int framebufferheight = 0;
 
-	glfwWindowHint(GLFW_SAMPLES, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    //Ustawienie wersji OPENGL
+    glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
+    //Zmienianie rozmiaru okna
+    glfwWindowHint(GLFW_RESIZABLE,GL_TRUE);
+    //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE); //MAC OS
 
-	// Open a window and create its OpenGL context
-	window = glfwCreateWindow( 1024, 768, "Tutorial 0 - Keyboard and Mouse", NULL, NULL);
-	if( window == NULL ){
-		fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
-		getchar();
-		glfwTerminate();
-		return -1;
-	}
+    //Create window
+    GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH,WINDOW_HEIGT,"Lab2",NULL,NULL);
+
+    //Zmiana rozmiaru okna bufora
+    glfwSetFramebufferSizeCallback(window,resize);
+//Używane gdy nie zmieniamy rozmiaru
+//    //Wybranie okna na którym chcemy działać
+//    glfwGetFramebufferSize(window,&framebufferwidth,&framebufferheight);
+//    //Wybranie na jakiej części okna rysujemy
+//    glViewport(0,0,framebufferwidth,framebufferheight);
+    //Ustawienie aktualnego okna
     glfwMakeContextCurrent(window);
 
-	// Initialize GLEW
-	glewExperimental = true; // Needed for core profile
-	if (glewInit() != GLEW_OK) {
-		fprintf(stderr, "Failed to initialize GLEW\n");
-		getchar();
-		glfwTerminate();
-		return -1;
-	}
+    //INIT GLEW
+    //Włączenie nowoczesnych bajer dla OpenGL
+    glewExperimental = GL_TRUE;
+    //Sprawdzenie błedów z glew
+    if(glewInit()!= GLEW_OK){
+        std::cout << "ERROR::LAB2.CPP::GLEW_INIT"<<"\n";
+        glfwTerminate();
+    }
 
-	// Ensure we can capture the escape key being pressed below
-	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-    // Hide the mouse and enable unlimited mouvement
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    
-    // Set the mouse at the center of the screen
-    glfwPollEvents();
-    glfwSetCursorPos(window, 1024/2, 768/2);
+    //INIT SHADER
+    GLuint core;
+    if(!shaderLoader(core)){
+        glfwTerminate();
+    }
 
-	// Dark blue background
-	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+    //MAIN LOOP
+    while(!glfwWindowShouldClose(window))
+    {
+        //UPDATE INPUT
+        //Pozwolenie na interakcji kursorowi
+        glfwPollEvents();
 
-	// Enable depth test
-	glEnable(GL_DEPTH_TEST);
-	// Accept fragment if it closer to the camera than the former one
-	glDepthFunc(GL_LESS); 
+        //UPDATE
+        //Czyszczenie ekranu
+        glClearColor(0.f,0.f,0.f,1.f);
+        //Czyszczenie buforwa koloru, szablonu i głębokości
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-	// Cull triangles which normal is not towards the camera
-	glEnable(GL_CULL_FACE);
+        //DRAW
 
-	GLuint VertexArrayID;
-	glGenVertexArrays(1, &VertexArrayID);
-	glBindVertexArray(VertexArrayID);
+        //END
+        //Zmiana bufforów i opróźnianie
+        glfwSwapBuffers(window);
+        glFlush();
+    }
 
-	// Create and compile our GLSL program from the shaders
-	GLuint programID = LoadShaders( "TransformVertexShader.vertexshader", "TextureFragmentShader.fragmentshader" );
+    //Niszczenie okna
+    glfwDestroyWindow(window);
+    //Kończenie programu
+    glfwTerminate();
 
-	// Get a handle for our "MVP" uniform
-	GLuint MatrixID = glGetUniformLocation(programID, "MVP");
-
-	// Load the texture
-	GLuint Texture = loadDDS("uvtemplate.DDS");
-	
-	// Get a handle for our "myTextureSampler" uniform
-	GLuint TextureID  = glGetUniformLocation(programID, "myTextureSampler");
-
-	// Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
-	// A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
-	static const GLfloat g_vertex_buffer_data[] = { 
-		-1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f, 1.0f,
-		-1.0f,-1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		-1.0f,-1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f,-1.0f,
-		 1.0f,-1.0f,-1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f,-1.0f,
-		-1.0f, 1.0f,-1.0f,
-		 1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f,-1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f, 1.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f,
-		 1.0f,-1.0f, 1.0f
-	};
-
-	// Two UV coordinatesfor each vertex. They were created with Blender.
-	static const GLfloat g_uv_buffer_data[] = { 
-		0.000059f, 0.000004f, 
-		0.000103f, 0.336048f, 
-		0.335973f, 0.335903f, 
-		1.000023f, 0.000013f, 
-		0.667979f, 0.335851f, 
-		0.999958f, 0.336064f, 
-		0.667979f, 0.335851f, 
-		0.336024f, 0.671877f, 
-		0.667969f, 0.671889f, 
-		1.000023f, 0.000013f, 
-		0.668104f, 0.000013f, 
-		0.667979f, 0.335851f, 
-		0.000059f, 0.000004f, 
-		0.335973f, 0.335903f, 
-		0.336098f, 0.000071f, 
-		0.667979f, 0.335851f, 
-		0.335973f, 0.335903f, 
-		0.336024f, 0.671877f, 
-		1.000004f, 0.671847f, 
-		0.999958f, 0.336064f, 
-		0.667979f, 0.335851f, 
-		0.668104f, 0.000013f, 
-		0.335973f, 0.335903f, 
-		0.667979f, 0.335851f, 
-		0.335973f, 0.335903f, 
-		0.668104f, 0.000013f, 
-		0.336098f, 0.000071f, 
-		0.000103f, 0.336048f, 
-		0.000004f, 0.671870f, 
-		0.336024f, 0.671877f, 
-		0.000103f, 0.336048f, 
-		0.336024f, 0.671877f, 
-		0.335973f, 0.335903f, 
-		0.667969f, 0.671889f, 
-		1.000004f, 0.671847f, 
-		0.667979f, 0.335851f
-	};
-
-	GLuint vertexbuffer;
-	glGenBuffers(1, &vertexbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-
-	GLuint uvbuffer;
-	glGenBuffers(1, &uvbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_uv_buffer_data), g_uv_buffer_data, GL_STATIC_DRAW);
-
-	do{
-
-		// Clear the screen
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		// Use our shader
-		glUseProgram(programID);
-
-		// Compute the MVP matrix from keyboard and mouse input
-		computeMatricesFromInputs();
-		glm::mat4 ProjectionMatrix = getProjectionMatrix();
-		glm::mat4 ViewMatrix = getViewMatrix();
-		glm::mat4 ModelMatrix = glm::mat4(1.0);
-		glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
-
-		// Send our transformation to the currently bound shader, 
-		// in the "MVP" uniform
-		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
-
-		// Bind our texture in Texture Unit 0
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, Texture);
-		// Set our "myTextureSampler" sampler to use Texture Unit 0
-		glUniform1i(TextureID, 0);
-
-		// 1rst attribute buffer : vertices
-		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-		glVertexAttribPointer(
-			0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
-			3,                  // size
-			GL_FLOAT,           // type
-			GL_FALSE,           // normalized?
-			0,                  // stride
-			(void*)0            // array buffer offset
-		);
-
-		// 2nd attribute buffer : UVs
-		glEnableVertexAttribArray(1);
-		glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-		glVertexAttribPointer(
-			1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
-			2,                                // size : U+V => 2
-			GL_FLOAT,                         // type
-			GL_FALSE,                         // normalized?
-			0,                                // stride
-			(void*)0                          // array buffer offset
-		);
-
-		// Draw the triangle !
-		glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles
-
-		glDisableVertexAttribArray(0);
-		glDisableVertexAttribArray(1);
-
-		// Swap buffers
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-
-	} // Check if the ESC key was pressed or the window was closed
-	while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-		   glfwWindowShouldClose(window) == 0 );
-
-	// Cleanup VBO and shader
-	glDeleteBuffers(1, &vertexbuffer);
-	glDeleteBuffers(1, &uvbuffer);
-	glDeleteProgram(programID);
-	glDeleteTextures(1, &TextureID);
-	glDeleteVertexArrays(1, &VertexArrayID);
-
-	// Close OpenGL window and terminate GLFW
-	glfwTerminate();
+    glDeleteProgram(core);
 
 	return 0;
 }
