@@ -25,7 +25,15 @@ void resize(GLFWwindow *,int W, int H)
 {
     glViewport(0,0,W,H);
 }
-
+//Funkcja służąca do obsługi klawiatury
+void updateInput(GLFWwindow *window)
+{
+    //Jeśli naciśniemy przycisk ESC w danym oknie to zamkniemy okno
+    if(glfwGetKey(window,GLFW_KEY_ESCAPE) == GLFW_PRESS){
+        glfwSetWindowShouldClose(window,GL_TRUE);
+    }
+}
+//Funkcja służacją do ładowania shaderów oraz ich sprawdzania
 bool shaderLoader(GLuint &program)
 {
     bool load = true;
@@ -178,6 +186,19 @@ int main( void )
         glfwTerminate();
     }
 
+    //OPENGL OPTIONS
+    //Umożliwia użycie współrzędnej Z
+    glEnable(GL_DEPTH_TEST);
+    //Usuwanie z rysowania tego co jest za czyms
+    glEnable(GL_CULL_FACE);
+    //Ustawienie kierunków rysowania
+    glCullFace(GL_BACK);
+    glFrontFace(GL_CCW);
+    //Włączenie blendingu czyli mieszania kolorów
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    //Pozowala robić z prymitywów obiekty, które zostaną wypełnione kolorem
+    glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
     //INIT SHADER
     GLuint core;
     if(!shaderLoader(core)){
@@ -190,6 +211,8 @@ int main( void )
         //UPDATE INPUT
         //Pozwolenie na interakcji kursorowi
         glfwPollEvents();
+        //Obsługa klawiatury
+        updateInput(window);
 
         //UPDATE
         //Czyszczenie ekranu
