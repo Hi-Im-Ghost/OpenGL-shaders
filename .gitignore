@@ -14,7 +14,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -27,6 +26,18 @@
 *.lib
 
 # Executables
-*.exe
 *.out
 *.app
+
+**/*.dll
+**/*.exe
+cmake-build-debug/*
+bin-*/*
+distrib/build_*/*
+**.bak
+**.orig
+screenshot.bmp
+*.pyc
+Thumbs.db
+**.mtl
+.DS_Store
