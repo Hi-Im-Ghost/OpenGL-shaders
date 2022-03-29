@@ -109,7 +109,7 @@ add_executable(lab2
 
 	lab2/TextureFragmentShader.fragmentshader
 	lab2/TransformVertexShader.vertexshader
-		)
+		lab2/Shader.cpp lab2/Shader.h)
 target_link_libraries(lab2
 	${ALL_LIBS}
 )

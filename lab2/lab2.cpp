@@ -22,6 +22,7 @@ using namespace glm;
 #include <SOIL2.h>
 #include <iostream>
 #include <fstream>
+#include "Shader.h"
 
 
 struct Vertex
@@ -95,113 +96,6 @@ void updateInput(GLFWwindow *window)
         glfwSetWindowShouldClose(window,GL_TRUE);
     }
 }
-//Funkcja służacją do ładowania shaderów oraz ich sprawdzania
-bool shaderLoader(GLuint &program)
-{
-    bool load = true;
-    //Tworzenie konsoli dla shaderow
-    char log[512];
-    GLint success;
-
-    //Zmienna przechowujaca tekst
-    std::string temp = "";
-    //Zmienna do przechowywania ścieżki
-    std::string src = "";
-    std::ifstream file;
-
-    //VERTEX
-    file.open("TransformVertexShader.vertexshader");
-    //Czytanie pliku
-    if(file.is_open())
-    {
-        while(std::getline(file,temp))
-            src += temp + "\n";
-    }else {
-        std::cout << "ERROR::LAB2::VERTEX_SHADER_LOADER" << "\n";
-        load = false;
-    }
-
-    file.close();
-
-    //Tworzenie vertex shadera w pamieci OpenGL i zwrócenie ID tego shadera
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    //Ustawienie odpowiedniego formatu
-    const GLchar* vert = src.c_str();
-    //Ustawiamy źródło shadera
-    glShaderSource(vertexShader,1,&vert,NULL);
-    //Kompilacja
-    glCompileShader(vertexShader);
-    //Sprawdzanie stanu kompilacji
-    glGetShaderiv(vertexShader,GL_COMPILE_STATUS, &success);
-    if(!success)
-    {
-        glGetShaderInfoLog(vertexShader,512,NULL,log);
-        std::cout <<"ERROR::LAB2::VERTEX_SHADER FILE ERROR" << "\n";
-        std::cout << log << "\n";
-        load = false;
-    }
-
-    //Czyszczenie
-    temp="";
-    src="";
-
-    //FRAGMENT
-    file.open("TextureFragmentShader.fragmentshader");
-    //Czytanie pliku
-    if(file.is_open())
-    {
-        while(std::getline(file,temp))
-            src += temp + "\n";
-    }else {
-        std::cout << "ERROR::LAB2::FRAGMENT_SHADER_LOADER" << "\n";
-        load = false;
-    }
-
-    file.close();
-
-    //Tworzenie vertex shadera w pamieci OpenGL i zwrócenie ID tego shadera
-    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    //Ustawienie odpowiedniego formatu
-    const GLchar* fragment = src.c_str();
-    //Ustawiamy źródło shadera
-    glShaderSource(fragmentShader,1,&fragment,NULL);
-    //Kompilacja
-    glCompileShader(fragmentShader);
-    //Sprawdzanie stanu kompilacji
-    glGetShaderiv(fragmentShader,GL_COMPILE_STATUS, &success);
-    if(!success)
-    {
-        glGetShaderInfoLog(fragmentShader,512,NULL,log);
-        std::cout <<"ERROR::LAB2::FRAGMENT_SHADER_LOADER FILE ERROR" << "\n";
-        std::cout << log << "\n";
-        load = false;
-    }
-
-    //PROGRAM
-    program = glCreateProgram();
-    //dołączanie do programu shaderów
-    glAttachShader(program,vertexShader);
-    glAttachShader(program,fragmentShader);
-    glLinkProgram(program);
-    //Sprawdzanie kompilacji
-    glGetProgramiv(program,GL_LINK_STATUS,&success);
-    if(!success)
-    {
-        glGetProgramInfoLog(program,512,NULL,log);
-        std::cout <<"ERROR::LAB2::PROGRAM_SHADER_LOADER FILE ERROR" << "\n";
-        std::cout << log << "\n";
-        load = false;
-    }
-
-    //END
-    //Restowanie programu
-    glUseProgram(0);
-    //Nie potrzebujemy inwidualnych shaderow poniewaz zostaja zlaczone w 1 program
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-
-    return load;
-}
 
 int main( void )
 {
@@ -261,11 +155,10 @@ int main( void )
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     //Pozowala robić z prymitywów obiekty, które zostaną wypełnione kolorem
     glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+
+
     //INIT SHADER
-    GLuint core;
-    if(!shaderLoader(core)){
-        glfwTerminate();
-    }
+    Shader core("TransformVertexShader.vertexshader","TextureFragmentShader.fragmentshader");
 
     //BUFORY VAO,VBO,EBO
     GLuint VAO;
@@ -404,19 +297,16 @@ int main( void )
     ProjectMatrix = glm::perspective(glm::radians(fov),static_cast<float>(framebufferwidth/framebufferheight),near,far);
 
     //LIGHTS
-    glm::vec3 ligtPos0(0.f,0.f,2.f);
+    glm::vec3 lightPos0(0.f,0.f,2.f);
 
     //UNIFORMS
-    glUseProgram(core);
+    core.setMat4fv(ModelMatrix,"ModelMatrix");
+    core.setMat4fv(ViewMatrix,"ViewMatrix");
+    core.setMat4fv(ProjectMatrix,"ProjectMatrix");
 
-    glUniformMatrix4fv(glGetUniformLocation(core,"ModelMatrix"),1,GL_FALSE,glm::value_ptr(ModelMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(core,"ViewMatrix"),1,GL_FALSE,glm::value_ptr(ViewMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(core,"ProjectMatrix"),1,GL_FALSE,glm::value_ptr(ProjectMatrix));
+    core.setVec3f(lightPos0,"lightPos0");
+    core.setVec3f(camPos,"cameraPos");
 
-    glUniform3fv(glGetUniformLocation(core,"lightPos0"),1,glm::value_ptr(ligtPos0));
-    glUniform3fv(glGetUniformLocation(core,"cameraPos"),1,glm::value_ptr(camPos));
-
-    glUseProgram(0);
     //MAIN LOOP
     while(!glfwWindowShouldClose(window))
     {
@@ -436,12 +326,12 @@ int main( void )
 
 
         //DRAW
-        glUseProgram(core);
+        core.use();
 
         //UNIFORMS UPDATE
         //Potrzebne by nakładać kolejne tekstury
-        glUniform1i(glGetUniformLocation(core,"texture0"),0);
-        glUniform1i(glGetUniformLocation(core,"texture1"),1);
+        core.set1i(0,"texture0");
+        core.set1i(1,"texture1");
 
         //Operacje
         //rotation.y += 2.f;
@@ -456,7 +346,7 @@ int main( void )
         ModelMatrix = glm::scale(ModelMatrix,glm::vec3(scale));
 
         //Transformacje
-        glUniformMatrix4fv(glGetUniformLocation(core,"ModelMatrix"),1,GL_FALSE,glm::value_ptr(ModelMatrix));
+        core.setMat4fv(ModelMatrix,"ModelMatrix");
 
         //CAMERA
         //Pobranie rozmiarów ramki w każdej klatce ponieważ możemy zmieniać rozmiar okna
@@ -464,8 +354,9 @@ int main( void )
 
         //Zachowanie rozmiarów przy zmianie rozmiaru okna
         ProjectMatrix = glm::perspective(glm::radians(fov),static_cast<float>(framebufferwidth/framebufferheight),near,far);
-        glUniformMatrix4fv(glGetUniformLocation(core,"ProjectMatrix"),1,GL_FALSE,glm::value_ptr(ProjectMatrix));
+        core.setMat4fv(ProjectMatrix,"ProjectMatrix");
 
+        core.use();
 
         //Aktywowanie tekstury
         glActiveTexture(GL_TEXTURE0);
@@ -495,8 +386,6 @@ int main( void )
     glfwDestroyWindow(window);
     //Kończenie programu
     glfwTerminate();
-
-    glDeleteProgram(core);
 
 	return 0;
 }
