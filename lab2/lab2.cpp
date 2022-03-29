@@ -30,15 +30,16 @@ struct Vertex
     glm::vec3 color;
     //Współrzędne tekstury
     glm::vec2 texcoord;
+    glm::vec3 normal;
 };
 
 Vertex vertices[]=
 {
-        //Position                           //Color                           //Textcoords
-        glm::vec3(-0.5f,0.5f,0.f),   glm::vec3(1.f,0.f,0.f),   glm::vec2(0.f,1.f),
-        glm::vec3(-0.5f,-0.5f,0.f), glm::vec3(0.f,1.f,0.f),   glm::vec2(0.f,0.f),
-        glm::vec3(0.5f,-0.5f,0.f),  glm::vec3(0.f,0.f,1.f),   glm::vec2(1.f,0.f),
-        glm::vec3(0.5f,0.5f,0.f), glm::vec3(1.f,1.f,0.f),   glm::vec2(1.f,1.f)
+        //Position                           //Color                           //Textcoords                 //NORMAL
+        glm::vec3(-0.5f,0.5f,0.f),  glm::vec3(1.f,0.f,0.f),   glm::vec2(0.f,1.f),  glm::vec3(0.f,0.f,-1.f),
+        glm::vec3(-0.5f,-0.5f,0.f), glm::vec3(0.f,1.f,0.f),   glm::vec2(0.f,0.f),  glm::vec3(0.f,0.f,-1.f),
+        glm::vec3(0.5f,-0.5f,0.f),  glm::vec3(0.f,0.f,1.f),   glm::vec2(1.f,0.f),  glm::vec3(0.f,0.f,-1.f),
+        glm::vec3(0.5f,0.5f,0.f),   glm::vec3(1.f,1.f,0.f),   glm::vec2(1.f,1.f),  glm::vec3(0.f,0.f,-1.f)
 
 };
 unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
@@ -297,6 +298,11 @@ int main( void )
     //TEXCOORD
     glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,texcoord));
     glEnableVertexAttribArray(2);
+
+    //NORMAL
+    glVertexAttribPointer(3,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,normal));
+    glEnableVertexAttribArray(3);
+
     //Odłączenie tablicy wierzechołków
     glBindVertexArray(0);
 
@@ -397,6 +403,9 @@ int main( void )
     //Zachowanie rozmiarów przy zmianie rozmiaru okna
     ProjectMatrix = glm::perspective(glm::radians(fov),static_cast<float>(framebufferwidth/framebufferheight),near,far);
 
+    //LIGHTS
+    glm::vec3 ligtPos0(0.f,0.f,2.f);
+
     //UNIFORMS
     glUseProgram(core);
 
@@ -404,6 +413,8 @@ int main( void )
     glUniformMatrix4fv(glGetUniformLocation(core,"ViewMatrix"),1,GL_FALSE,glm::value_ptr(ViewMatrix));
     glUniformMatrix4fv(glGetUniformLocation(core,"ProjectMatrix"),1,GL_FALSE,glm::value_ptr(ProjectMatrix));
 
+    glUniform3fv(glGetUniformLocation(core,"lightPos0"),1,glm::value_ptr(ligtPos0));
+    glUniform3fv(glGetUniformLocation(core,"cameraPos"),1,glm::value_ptr(camPos));
 
     glUseProgram(0);
     //MAIN LOOP
@@ -435,6 +446,7 @@ int main( void )
         //Operacje
         //rotation.y += 2.f;
         //Translacja
+        ModelMatrix = glm::mat4(1.f);
         ModelMatrix = glm::translate(ModelMatrix,position);
         //Obrót wybranej osi
         ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.x),glm::vec3(1.f,0.f,0.f));
