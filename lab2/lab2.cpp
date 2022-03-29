@@ -198,11 +198,11 @@ int main( void )
     //Create window
     GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH,WINDOW_HEIGT,"Lab2",NULL,NULL);
 
+    //Wybranie okna na którym chcemy działać
+    glfwGetFramebufferSize(window,&framebufferwidth,&framebufferheight);
     //Zmiana rozmiaru okna bufora
     glfwSetFramebufferSizeCallback(window,resize);
 //Używane gdy nie zmieniamy rozmiaru
-//    //Wybranie okna na którym chcemy działać
-//    glfwGetFramebufferSize(window,&framebufferwidth,&framebufferheight);
 //    //Wybranie na jakiej części okna rysujemy
 //    glViewport(0,0,framebufferwidth,framebufferheight);
     //Ustawienie aktualnego okna
@@ -347,9 +347,30 @@ int main( void )
     //Skalowanie
     ModelMatrix = glm::scale(ModelMatrix,glm::vec3(1.f));
 
+    //CAMERA
+    glm::vec3 camPos(0.f,0.f,1.f);
+    //Wektor skierowany w góre
+    glm::vec3 worldUP = glm::vec3(0.f,1.f,0.f);
+    //Wektor skierowany w przód
+    glm::vec3 worldFront = glm::vec3(0.f,0.f,-1.f);
+    glm::mat4 ViewMatrix(1.f);
+    ViewMatrix = glm::lookAt(camPos,camPos+worldFront,worldUP);
+
+    float fov = 90.f;
+    float near = 0.1f;
+    float far = 1000.f;
+    glm::mat4 ProjectMatrix(1.f);
+    
+    //Zachowanie rozmiarów przy zmianie rozmiaru okna
+    ProjectMatrix = glm::perspective(glm::radians(fov),static_cast<float>(framebufferwidth/framebufferheight),near,far);
+
+    //UNIFORMS
     glUseProgram(core);
 
     glUniformMatrix4fv(glGetUniformLocation(core,"ModelMatrix"),1,GL_FALSE,glm::value_ptr(ModelMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(core,"ViewMatrix"),1,GL_FALSE,glm::value_ptr(ViewMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(core,"ProjectMatrix"),1,GL_FALSE,glm::value_ptr(ProjectMatrix));
+
 
     glUseProgram(0);
     //MAIN LOOP
@@ -388,6 +409,15 @@ int main( void )
 
         //Transformacje
         glUniformMatrix4fv(glGetUniformLocation(core,"ModelMatrix"),1,GL_FALSE,glm::value_ptr(ModelMatrix));
+
+        //CAMERA
+        //Pobranie rozmiarów ramki w każdej klatce ponieważ możemy zmieniać rozmiar okna
+        glfwGetFramebufferSize(window,&framebufferwidth,&framebufferheight);
+
+        //Zachowanie rozmiarów przy zmianie rozmiaru okna
+        ProjectMatrix = glm::perspective(glm::radians(fov),static_cast<float>(framebufferwidth/framebufferheight),near,far);
+        glUniformMatrix4fv(glGetUniformLocation(core,"ProjectMatrix"),1,GL_FALSE,glm::value_ptr(ProjectMatrix));
+
 
         //Aktywowanie tekstury
         glActiveTexture(GL_TEXTURE0);
