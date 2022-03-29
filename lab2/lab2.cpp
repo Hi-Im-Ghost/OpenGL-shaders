@@ -17,8 +17,11 @@ using namespace glm;
 #include <common/shader.hpp>
 #include <common/texture.hpp>
 #include <common/controls.hpp>
+#include <common/stb_image.h>
+#include <SOIL2.h>
 #include <iostream>
 #include <fstream>
+
 
 struct Vertex
 {
@@ -32,9 +35,9 @@ Vertex vertices[]=
 {
         //Position                           //Color                           //Textcoords
         glm::vec3(-0.5f,0.5f,0.f),   glm::vec3(1.f,0.f,0.f),   glm::vec2(0.f,1.f),
-        glm::vec3(-0.5f,-0.5f,0.f), glm::vec3(0.f,1.f,0.f),   glm::vec2(0.f,1.f),
-        glm::vec3(0.5f,-0.5f,0.f),  glm::vec3(0.f,0.f,1.f),   glm::vec2(0.f,1.f),
-        glm::vec3(0.5f,0.5f,0.f), glm::vec3(1.f,1.f,0.f),   glm::vec2(0.f,1.f)
+        glm::vec3(-0.5f,-0.5f,0.f), glm::vec3(0.f,1.f,0.f),   glm::vec2(0.f,0.f),
+        glm::vec3(0.5f,-0.5f,0.f),  glm::vec3(0.f,0.f,1.f),   glm::vec2(1.f,0.f),
+        glm::vec3(0.5f,0.5f,0.f), glm::vec3(1.f,1.f,0.f),   glm::vec2(1.f,1.f)
 
 };
 unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
@@ -262,9 +265,42 @@ int main( void )
 
     //TEXCOORD
     glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,texcoord));
-    glEnableVertexAttribArray(12);
+    glEnableVertexAttribArray(2);
     //Odłączenie tablicy wierzechołków
     glBindVertexArray(0);
+
+    //TEXTURE
+    //Id textury
+    GLuint texture0;
+    //Generowanie tekstury
+    glGenTextures(1,&texture0);
+    //Wybranie tekstury
+    glBindTexture(GL_TEXTURE_2D,texture0);
+
+    //Powtarzanie tekstury
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
+    //Antyaliasing
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+
+    int image_width, image_height, channels ;
+    unsigned char* image = stbi_load("../Images/wood.png",&image_width,&image_height,&channels,STBI_rgb_alpha);
+
+    if(image)
+    {
+        glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,image_width,image_height,0,GL_RGBA,GL_UNSIGNED_BYTE,image);
+        //Generowanie kilku obrazów o różnych rozmiarach w zaleznosci od odleglosci
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }else{
+        std::cout << "ERROR::TEXUTRE LOADING" << "\n";
+    }
+
+    glActiveTexture(0);
+    //Wyłączenie tekstury
+    glBindTexture(GL_TEXTURE_2D,0);
+    stbi_image_free(image);
+
     //MAIN LOOP
     while(!glfwWindowShouldClose(window))
     {
@@ -283,8 +319,18 @@ int main( void )
 
         //DRAW
         glUseProgram(core);
+
+        //UNIFORMS UPDATE
+        //Potrzebne by nakładać kolejne tekstury
+        glUniform1i(glGetUniformLocation(core,"texture0"),0);
+
+        //Aktywowanie tekstury
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D,texture0);
+
         //Znajdowanie tablicy wierzechołków
         glBindVertexArray(VAO);
+
         //Narysuj element
         //glDrawArrays(GL_TRIANGLES, 0, nrOfVertices);
         glDrawElements(GL_TRIANGLES,nrOfIndices,GL_UNSIGNED_INT,0);
@@ -296,6 +342,8 @@ int main( void )
 
         glBindVertexArray(0);
         glUseProgram(0);
+        glActiveTexture(0);
+        glBindTexture(GL_TEXTURE_2D,0);
     }
 
     //Niszczenie okna

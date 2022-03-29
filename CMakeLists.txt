@@ -45,6 +45,7 @@ include_directories(
 	external/glew-1.13.0/include/
 	external/assimp-3.0.1270/include/
 	external/bullet-2.81-rev2613/src/
+	external/SOIL2-master/incs
 	.
 )
 
@@ -61,6 +62,8 @@ set(ALL_LIBS_GLUT
 		)
 
 add_definitions(
+	-lsoil
+	-lopengl32
 	-DTW_STATIC
 	-DTW_NO_LIB_PRAGMA
 	-DTW_NO_DIRECT3D
@@ -101,10 +104,12 @@ add_executable(lab2
 	common/texture.hpp
 	common/objloader.cpp
 	common/objloader.hpp
+	common/stb_image.c
+	common/stb_image.h
 
 	lab2/TextureFragmentShader.fragmentshader
 	lab2/TransformVertexShader.vertexshader
-)
+		)
 target_link_libraries(lab2
 	${ALL_LIBS}
 )
