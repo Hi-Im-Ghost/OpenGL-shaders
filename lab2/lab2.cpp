@@ -31,16 +31,19 @@ struct Vertex
 Vertex vertices[]=
 {
         //Position                           //Color                           //Textcoords
-        glm::vec3(0.0f,0.5f,0.f),   glm::vec3(1.f,0.f,0.f),   glm::vec2(0.f,1.f),
+        glm::vec3(-0.5f,0.5f,0.f),   glm::vec3(1.f,0.f,0.f),   glm::vec2(0.f,1.f),
         glm::vec3(-0.5f,-0.5f,0.f), glm::vec3(0.f,1.f,0.f),   glm::vec2(0.f,1.f),
-        glm::vec3(0.5f,-0.5f,0.f),  glm::vec3(0.f,0.f,1.f),   glm::vec2(0.f,1.f)
+        glm::vec3(0.5f,-0.5f,0.f),  glm::vec3(0.f,0.f,1.f),   glm::vec2(0.f,1.f),
+        glm::vec3(0.5f,0.5f,0.f), glm::vec3(1.f,1.f,0.f),   glm::vec2(0.f,1.f)
+
 };
 unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
 
 //Indeksy do określania przy rysowaniu które wierzchołki użyć by nie było duplikatów
 GLuint  indices[] =
 {
-    0, 1, 2
+    0, 1, 2, //1 trójkąt
+    0, 2, 3 //2 trójkąt
 };
 unsigned nrOfIndices = sizeof(indices)/sizeof(GLuint);
 
