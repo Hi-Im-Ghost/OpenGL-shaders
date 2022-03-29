@@ -1,0 +1,82 @@
+#include "Primitives.h"
+
+void Primitives::set(const Vertex *vertices, const unsigned int nrOfVertices, const GLuint *indices,
+                     const unsigned int nrOfIndices) {
+    for (size_t i = 0; i < nrOfVertices; i++)
+    {
+        this->vertices.push_back(vertices[i]);
+    }
+    for (size_t i = 0; i < nrOfIndices; i++)
+    {
+        this->indices.push_back(indices[i]);
+    }
+
+}
+
+Vertex *Primitives::getVertices() {
+    return this->vertices.data();
+}
+
+GLuint *Primitives::getIndices() {
+    return this->indices.data();
+}
+
+const unsigned Primitives::getNrOfVertices() {
+    return this->vertices.size();
+}
+
+const unsigned Primitives::getNrOfIndices() {
+    return this->indices.size();
+}
+
+
+Quad::Quad(): Primitives() {
+    //Tablica wierzchołków
+    Vertex vertices[] =
+            {
+                    //Position								        //Color							        //Texcoords					    //Normals
+                    glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(0.5f, 0.5f, 0.f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)
+            };
+    //Obliczanie ilości wierzchołków
+    unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
+    //Indeksy do określania przy rysowaniu które wierzchołki użyć by nie było duplikatów
+    GLuint indices[] =
+            {
+                    0, 1, 2,	//Trójkąt 1
+                    0, 2, 3		//Trójkąt 2
+            };
+    //Obliczanie ilości indeksów
+    unsigned nrOfIndices = sizeof(indices) / sizeof(GLuint);
+
+    //Utworzenie kwadrata
+    this->set(vertices, nrOfVertices, indices, nrOfIndices);
+}
+
+
+Triangle::Triangle() : Primitives() {
+    //Tablica wierzchołków
+    Vertex vertices[] =
+            {
+                    //Position								        //Color							        //Texcoords					    //Normals
+                    glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(0.5f, 0.5f, 0.f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)
+            };
+    //Obliczanie ilości wierzchołków
+    unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
+
+    //Indeksy do określania przy rysowaniu które wierzchołki użyć by nie było duplikatów
+    GLuint indices[] =
+            {
+                    0, 1, 2	//Trójkąt 1
+            };
+    //Obliczanie ilości indeksów
+    unsigned nrOfIndices = sizeof(indices) / sizeof(GLuint);
+
+    //Utworzenie trójkąta
+    this->set(vertices, nrOfVertices, indices, nrOfIndices);
+}

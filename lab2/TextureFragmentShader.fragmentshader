@@ -19,15 +19,15 @@ void main()
 	//Ambient light
     vec3 ambientLight = vec3(0.1f,0.1f,0.1f);
 	//Diffuse light
-    vec3 posToLightVec = normalize(vs_position-lightPos0);
+    vec3 posToLightVec = normalize(lightPos0-vs_position);
     vec3 diffuseColor = vec3(1.f,1.f,1.f);
     float diffuse = clamp(dot(posToLightVec,vs_normal),0,1);
     vec3 diffuseFinal = diffuseColor * diffuse;
 
     //Specular light
-    vec3 lightToPosVec = normalize(lightPos0 - vs_position);
+    vec3 lightToPosVec = normalize(vs_position-lightPos0);
     vec3 reflectDirVec = normalize(reflect(lightToPosVec, normalize(vs_normal)));
-    vec3 posToViewVec = normalize(vs_position - cameraPos);
+    vec3 posToViewVec = normalize(cameraPos-vs_position);
     float specularConstant = pow(max(dot(posToViewVec,reflectDirVec),0),30);
     vec3 specularFinal = vec3(1.f,1.f,1.f)*specularConstant;
 

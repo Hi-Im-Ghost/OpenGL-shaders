@@ -62,8 +62,6 @@ set(ALL_LIBS_GLUT
 		)
 
 add_definitions(
-	-lsoil
-	-lopengl32
 	-DTW_STATIC
 	-DTW_NO_LIB_PRAGMA
 	-DTW_NO_DIRECT3D
@@ -109,9 +107,10 @@ add_executable(lab2
 
 	lab2/TextureFragmentShader.fragmentshader
 	lab2/TransformVertexShader.vertexshader
-		lab2/Shader.cpp lab2/Shader.h lab2/Texture.cpp lab2/Texture.h)
+		lab2/Shader.cpp lab2/Shader.h lab2/Texture.cpp lab2/Texture.h lab2/Mesh.cpp lab2/Mesh.h lab2/Primitives/Primitives.cpp lab2/Primitives/Primitives.h lab2/Primitives/Vertex.h)
 target_link_libraries(lab2
 	${ALL_LIBS}
+
 )
 # Xcode and Visual working directories
 set_target_properties(lab2 PROPERTIES XCODE_ATTRIBUTE_CONFIGURATION_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lab2/")

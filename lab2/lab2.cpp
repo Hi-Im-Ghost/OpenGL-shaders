@@ -15,71 +15,47 @@ GLFWwindow* window;
 #include <glm/gtc/type_ptr.hpp>
 using namespace glm;
 
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
 #include <common/shader.hpp>
 #include <common/texture.hpp>
 #include <common/controls.hpp>
 #include <common/stb_image.h>
-#include <SOIL2.h>
-#include <iostream>
-#include <fstream>
 #include "Shader.h"
 #include "Texture.h"
-
-struct Vertex
-{
-    glm::vec3 position;
-    glm::vec3 color;
-    //Współrzędne tekstury
-    glm::vec2 texcoord;
-    glm::vec3 normal;
-};
-
-Vertex vertices[]=
-{
-        //Position                           //Color                           //Textcoords                 //NORMAL
-        glm::vec3(-0.5f,0.5f,0.f),  glm::vec3(1.f,0.f,0.f),   glm::vec2(0.f,1.f),  glm::vec3(0.f,0.f,-1.f),
-        glm::vec3(-0.5f,-0.5f,0.f), glm::vec3(0.f,1.f,0.f),   glm::vec2(0.f,0.f),  glm::vec3(0.f,0.f,-1.f),
-        glm::vec3(0.5f,-0.5f,0.f),  glm::vec3(0.f,0.f,1.f),   glm::vec2(1.f,0.f),  glm::vec3(0.f,0.f,-1.f),
-        glm::vec3(0.5f,0.5f,0.f),   glm::vec3(1.f,1.f,0.f),   glm::vec2(1.f,1.f),  glm::vec3(0.f,0.f,-1.f)
-
-};
-unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
-
-//Indeksy do określania przy rysowaniu które wierzchołki użyć by nie było duplikatów
-GLuint  indices[] =
-{
-    0, 1, 2, //1 trójkąt
-    0, 2, 3 //2 trójkąt
-};
-unsigned nrOfIndices = sizeof(indices)/sizeof(GLuint);
+#include "Mesh.h"
+#include "Primitives/Primitives.h"
+#include "Primitives/Vertex.h"
 
 //Funkcja do poruszania
-void updateInput(GLFWwindow* window,glm::vec3 &position, glm::vec3& rotation, glm::vec3 &scale)
+void updateInput(GLFWwindow* window,Mesh &mesh)
 {
     //Jeśli klikne klawisz W to przesune.....
     if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
-        position.z-=0.01f;
+        mesh.move(glm::vec3(0.f, 0.f, -0.01f));
     }
     if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
-        position.z+=0.01f;
+        mesh.move(glm::vec3(0.f, 0.f, 0.01f));
     }
     if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
-        position.x-=0.01f;
+        mesh.move(glm::vec3(-0.01f, 0.f, 0.f));
     }
     if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
-        position.x+=0.01f;
+        mesh.move(glm::vec3(0.01f, 0.f, 0.f));
     }
     if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS){
-        rotation.y-=1.f;
+        mesh.rotate(glm::vec3(0.f, -1.f, 0.f));
     }
     if(glfwGetKey(window,GLFW_KEY_E) == GLFW_PRESS){
-        rotation.y+=1.f;
+        mesh.rotate(glm::vec3(0.f, 1.f, 0.f));
     }
     if(glfwGetKey(window,GLFW_KEY_Z) == GLFW_PRESS){
-        scale+=0.1f;
+        mesh.scaleUp(glm::vec3(1.f));
     }
     if(glfwGetKey(window,GLFW_KEY_X) == GLFW_PRESS){
-        scale-=0.1f;
+        mesh.scaleUp(glm::vec3(-1.f));
     }
 }
 
@@ -145,6 +121,8 @@ int main( void )
     //OPENGL OPTIONS
     //Umożliwia użycie współrzędnej Z
     glEnable(GL_DEPTH_TEST);
+    //Stencil BUFFOR
+    glEnable(GL_STENCIL_TEST);
     //Usuwanie z rysowania tego co jest za czyms
     glEnable(GL_CULL_FACE);
     //Ustawienie kierunków rysowania
@@ -160,64 +138,47 @@ int main( void )
     //INIT SHADER
     Shader core("TransformVertexShader.vertexshader","TextureFragmentShader.fragmentshader");
 
-    //BUFORY VAO,VBO,EBO
-    GLuint VAO;
-    glCreateVertexArrays(1,&VAO);
-    //Aktywacja do przechowywania w danym buforze wszystkich rzeczy
-    glBindVertexArray(VAO);
+    //Tablica wierzchołków
+    Vertex vertices[] =
+            {
+                    //Position								        //Color							        //Texcoords					    //Normals
+                    glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+                    glm::vec3(0.5f, 0.5f, 0.f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)
+            };
+    //Obliczanie ilości wierzchołków
+    unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
+    //Indeksy do określania przy rysowaniu które wierzchołki użyć by nie było duplikatów
+    GLuint indices[] =
+            {
+                    0, 1, 2,	//Trójkąt 1
+                    0, 2, 3		//Trójkąt 2
+            };
+    //Obliczanie ilości indeksów
+    unsigned nrOfIndices = sizeof(indices) / sizeof(GLuint);
 
-    //Tworzenie miejsca dla buforów i dodawanie danych
-    GLuint VBO;
-    glGenBuffers(1,&VBO);
-    glBindBuffer(GL_ARRAY_BUFFER,VBO);
-    //Dane wysyłane do GPU
-    glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices,GL_STATIC_DRAW); //STATIC jesli nie zmieniamy obiektow ktore rysujemy
-    //Do indeksowania
-    GLuint EBO;
-    glGenBuffers(1,&EBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices),indices,GL_STATIC_DRAW);
 
-    //POSITION
-    //Jak będziemy używać danych wejściowych
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,position));
-    //Włączenie tablicy wierzchołków
-    glEnableVertexAttribArray(0);
+    //MESH
+//    Mesh quad(&Quad(),
+//              glm::vec3(0.f),
+//              glm::vec3(0.f),
+//              glm::vec3(1.f)
+//    );
 
-    //COLOR
-    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,color));
-    glEnableVertexAttribArray(1);
-
-    //TEXCOORD
-    glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,texcoord));
-    glEnableVertexAttribArray(2);
-
-    //NORMAL
-    glVertexAttribPointer(3,3,GL_FLOAT,GL_FALSE,sizeof(Vertex),(GLvoid*)offsetof(Vertex,normal));
-    glEnableVertexAttribArray(3);
-
-    //Odłączenie tablicy wierzechołków
-    glBindVertexArray(0);
+    Mesh quad(vertices,
+              nrOfVertices,
+              indices,
+              nrOfIndices,
+              glm::vec3(0.f),
+              glm::vec3(0.f),
+              glm::vec3(1.f)
+    );
 
     //TEXTURE
     Texture texture0("../Images/wood.png",GL_TEXTURE_2D,0);
     Texture texture1("../Images/awesomeface.png",GL_TEXTURE_2D,1);
 
-    //MATRIX
-    glm::vec3 position(0.f);
-    glm::vec3 rotation(0.f);
-    glm::vec3 scale(1.f);
-    //Inicjalizowanie macierzy
-    glm::mat4 ModelMatrix(1.f);
-    //Operacje
-    //Translacja
-    ModelMatrix = glm::translate(ModelMatrix,position);
-    //Obrót wybranej osi
-    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.x),glm::vec3(1.f,0.f,0.f));
-    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.y),glm::vec3(0.f,1.f,0.f));
-    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.z),glm::vec3(0.f,0.f,1.f));
-    //Skalowanie
-    ModelMatrix = glm::scale(ModelMatrix,glm::vec3(scale));
 
     //CAMERA
     glm::vec3 camPos(0.f,0.f,1.f);
@@ -240,7 +201,6 @@ int main( void )
     glm::vec3 lightPos0(0.f,0.f,2.f);
 
     //UNIFORMS
-    core.setMat4fv(ModelMatrix,"ModelMatrix");
     core.setMat4fv(ViewMatrix,"ViewMatrix");
     core.setMat4fv(ProjectMatrix,"ProjectMatrix");
 
@@ -254,7 +214,7 @@ int main( void )
         //Pozwolenie na interakcji kursorowi
         glfwPollEvents();
         //Poruszanie
-        updateInput(window,position,rotation,scale);
+        updateInput(window,quad);
         //ESC
         updateInput(window);
 
@@ -268,21 +228,6 @@ int main( void )
         //Potrzebne by nakładać kolejne tekstury
         core.set1i(texture0.getTextureUnit(),"texture0");
         core.set1i(texture1.getTextureUnit(),"texture1");
-
-        //Operacje
-        //rotation.y += 2.f;
-        //Translacja
-        ModelMatrix = glm::mat4(1.f);
-        ModelMatrix = glm::translate(ModelMatrix,position);
-        //Obrót wybranej osi
-        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.x),glm::vec3(1.f,0.f,0.f));
-        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.y),glm::vec3(0.f,1.f,0.f));
-        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.z),glm::vec3(0.f,0.f,1.f));
-        //Skalowanie
-        ModelMatrix = glm::scale(ModelMatrix,glm::vec3(scale));
-
-        //Transformacje
-        core.setMat4fv(ModelMatrix,"ModelMatrix");
 
         //CAMERA
         //Pobranie rozmiarów ramki w każdej klatce ponieważ możemy zmieniać rozmiar okna
@@ -298,12 +243,9 @@ int main( void )
         texture0.bind();
         texture1.bind();
 
-        //Znajdowanie tablicy wierzechołków
-        glBindVertexArray(VAO);
 
         //Narysuj element
-        //glDrawArrays(GL_TRIANGLES, 0, nrOfVertices);
-        glDrawElements(GL_TRIANGLES,nrOfIndices,GL_UNSIGNED_INT,0);
+        quad.render(&core);
 
         //END
         //Zmiana bufforów i opróźnianie
