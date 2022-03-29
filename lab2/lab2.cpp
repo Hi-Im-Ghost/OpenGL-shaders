@@ -12,6 +12,7 @@ GLFWwindow* window;
 // Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 using namespace glm;
 
 #include <common/shader.hpp>
@@ -333,6 +334,24 @@ int main( void )
     glBindTexture(GL_TEXTURE_2D,0);
     stbi_image_free(image1);
 
+    //MATRIX
+    //Inicjalizowanie macierzy
+    glm::mat4 ModelMatrix(1.f);
+    //Operacje
+    //Translacja
+    ModelMatrix = glm::translate(ModelMatrix,glm::vec3(0.f,0.f,0.f));
+    //Obrót wybranej osi
+    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(1.f,0.f,0.f));
+    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(0.f,1.f,0.f));
+    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(0.f,0.f,1.f));
+    //Skalowanie
+    ModelMatrix = glm::scale(ModelMatrix,glm::vec3(1.f));
+
+    glUseProgram(core);
+
+    glUniformMatrix4fv(glGetUniformLocation(core,"ModelMatrix"),1,GL_FALSE,glm::value_ptr(ModelMatrix));
+
+    glUseProgram(0);
     //MAIN LOOP
     while(!glfwWindowShouldClose(window))
     {
@@ -356,6 +375,19 @@ int main( void )
         //Potrzebne by nakładać kolejne tekstury
         glUniform1i(glGetUniformLocation(core,"texture0"),0);
         glUniform1i(glGetUniformLocation(core,"texture1"),1);
+
+        //Operacje
+        //Translacja
+        ModelMatrix = glm::translate(ModelMatrix,glm::vec3(0.f,0.f,0.f));
+        //Obrót wybranej osi
+        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(1.f,0.f,0.f));
+        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(2.f),glm::vec3(0.f,1.f,0.f));
+        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(0.f,0.f,1.f));
+        //Skalowanie
+        ModelMatrix = glm::scale(ModelMatrix,glm::vec3(1.f));
+
+        //Transformacje
+        glUniformMatrix4fv(glGetUniformLocation(core,"ModelMatrix"),1,GL_FALSE,glm::value_ptr(ModelMatrix));
 
         //Aktywowanie tekstury
         glActiveTexture(GL_TEXTURE0);
