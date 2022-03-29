@@ -269,7 +269,7 @@ int main( void )
     //Odłączenie tablicy wierzechołków
     glBindVertexArray(0);
 
-    //TEXTURE
+    //TEXTURE 0
     //Id textury
     GLuint texture0;
     //Generowanie tekstury
@@ -280,7 +280,7 @@ int main( void )
     //Powtarzanie tekstury
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
-    //Antyaliasing
+    //Antyaliasing i inne takie
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 
@@ -300,6 +300,38 @@ int main( void )
     //Wyłączenie tekstury
     glBindTexture(GL_TEXTURE_2D,0);
     stbi_image_free(image);
+
+    //TEXTURE 1
+    //Id textury
+    GLuint texture1;
+    //Generowanie tekstury
+    glGenTextures(1,&texture1);
+    //Wybranie tekstury
+    glBindTexture(GL_TEXTURE_2D,texture1);
+
+    //Powtarzanie tekstury
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
+    //Antyaliasing i inne takie
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+
+    int image_width1, image_height1, channels1 ;
+    unsigned char* image1 = stbi_load("../Images/awesomeface.png",&image_width1,&image_height1,&channels1,STBI_rgb_alpha);
+
+    if(image1)
+    {
+        glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,image_width1,image_height1,0,GL_RGBA,GL_UNSIGNED_BYTE,image1);
+        //Generowanie kilku obrazów o różnych rozmiarach w zaleznosci od odleglosci
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }else{
+        std::cout << "ERROR::TEXUTRE LOADING" << "\n";
+    }
+
+    glActiveTexture(0);
+    //Wyłączenie tekstury
+    glBindTexture(GL_TEXTURE_2D,0);
+    stbi_image_free(image1);
 
     //MAIN LOOP
     while(!glfwWindowShouldClose(window))
@@ -323,10 +355,13 @@ int main( void )
         //UNIFORMS UPDATE
         //Potrzebne by nakładać kolejne tekstury
         glUniform1i(glGetUniformLocation(core,"texture0"),0);
+        glUniform1i(glGetUniformLocation(core,"texture1"),1);
 
         //Aktywowanie tekstury
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D,texture0);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D,texture1);
 
         //Znajdowanie tablicy wierzechołków
         glBindVertexArray(VAO);
