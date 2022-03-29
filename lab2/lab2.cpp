@@ -51,6 +51,36 @@ GLuint  indices[] =
 };
 unsigned nrOfIndices = sizeof(indices)/sizeof(GLuint);
 
+//Funkcja do poruszania
+void updateInput(GLFWwindow* window,glm::vec3 &position, glm::vec3& rotation, glm::vec3 &scale)
+{
+    //Jeśli klikne klawisz W to przesune.....
+    if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
+        position.z-=0.01f;
+    }
+    if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
+        position.z+=0.01f;
+    }
+    if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
+        position.x-=0.01f;
+    }
+    if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
+        position.x+=0.01f;
+    }
+    if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS){
+        rotation.y-=1.f;
+    }
+    if(glfwGetKey(window,GLFW_KEY_E) == GLFW_PRESS){
+        rotation.y+=1.f;
+    }
+    if(glfwGetKey(window,GLFW_KEY_Z) == GLFW_PRESS){
+        scale+=0.1f;
+    }
+    if(glfwGetKey(window,GLFW_KEY_X) == GLFW_PRESS){
+        scale-=0.1f;
+    }
+}
+
 //Zmiana rozmiaru okna
 void resize(GLFWwindow *,int W, int H)
 {
@@ -335,17 +365,20 @@ int main( void )
     stbi_image_free(image1);
 
     //MATRIX
+    glm::vec3 position(0.f);
+    glm::vec3 rotation(0.f);
+    glm::vec3 scale(1.f);
     //Inicjalizowanie macierzy
     glm::mat4 ModelMatrix(1.f);
     //Operacje
     //Translacja
-    ModelMatrix = glm::translate(ModelMatrix,glm::vec3(0.f,0.f,0.f));
+    ModelMatrix = glm::translate(ModelMatrix,position);
     //Obrót wybranej osi
-    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(1.f,0.f,0.f));
-    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(0.f,1.f,0.f));
-    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(0.f,0.f,1.f));
+    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.x),glm::vec3(1.f,0.f,0.f));
+    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.y),glm::vec3(0.f,1.f,0.f));
+    ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.z),glm::vec3(0.f,0.f,1.f));
     //Skalowanie
-    ModelMatrix = glm::scale(ModelMatrix,glm::vec3(1.f));
+    ModelMatrix = glm::scale(ModelMatrix,glm::vec3(scale));
 
     //CAMERA
     glm::vec3 camPos(0.f,0.f,1.f);
@@ -360,7 +393,7 @@ int main( void )
     float near = 0.1f;
     float far = 1000.f;
     glm::mat4 ProjectMatrix(1.f);
-    
+
     //Zachowanie rozmiarów przy zmianie rozmiaru okna
     ProjectMatrix = glm::perspective(glm::radians(fov),static_cast<float>(framebufferwidth/framebufferheight),near,far);
 
@@ -379,7 +412,9 @@ int main( void )
         //UPDATE INPUT
         //Pozwolenie na interakcji kursorowi
         glfwPollEvents();
-        //Obsługa klawiatury
+        //Poruszanie
+        updateInput(window,position,rotation,scale);
+        //ESC
         updateInput(window);
 
         //UPDATE
@@ -398,14 +433,15 @@ int main( void )
         glUniform1i(glGetUniformLocation(core,"texture1"),1);
 
         //Operacje
+        //rotation.y += 2.f;
         //Translacja
-        ModelMatrix = glm::translate(ModelMatrix,glm::vec3(0.f,0.f,0.f));
+        ModelMatrix = glm::translate(ModelMatrix,position);
         //Obrót wybranej osi
-        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(1.f,0.f,0.f));
-        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(2.f),glm::vec3(0.f,1.f,0.f));
-        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(0.f),glm::vec3(0.f,0.f,1.f));
+        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.x),glm::vec3(1.f,0.f,0.f));
+        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.y),glm::vec3(0.f,1.f,0.f));
+        ModelMatrix = glm::rotate(ModelMatrix,glm::radians(rotation.z),glm::vec3(0.f,0.f,1.f));
         //Skalowanie
-        ModelMatrix = glm::scale(ModelMatrix,glm::vec3(1.f));
+        ModelMatrix = glm::scale(ModelMatrix,glm::vec3(scale));
 
         //Transformacje
         glUniformMatrix4fv(glGetUniformLocation(core,"ModelMatrix"),1,GL_FALSE,glm::value_ptr(ModelMatrix));
