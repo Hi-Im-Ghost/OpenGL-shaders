@@ -23,7 +23,7 @@ using namespace glm;
 #include <iostream>
 #include <fstream>
 #include "Shader.h"
-
+#include "Texture.h"
 
 struct Vertex
 {
@@ -199,69 +199,9 @@ int main( void )
     //Odłączenie tablicy wierzechołków
     glBindVertexArray(0);
 
-    //TEXTURE 0
-    //Id textury
-    GLuint texture0;
-    //Generowanie tekstury
-    glGenTextures(1,&texture0);
-    //Wybranie tekstury
-    glBindTexture(GL_TEXTURE_2D,texture0);
-
-    //Powtarzanie tekstury
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
-    //Antyaliasing i inne takie
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-
-    int image_width, image_height, channels ;
-    unsigned char* image = stbi_load("../Images/wood.png",&image_width,&image_height,&channels,STBI_rgb_alpha);
-
-    if(image)
-    {
-        glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,image_width,image_height,0,GL_RGBA,GL_UNSIGNED_BYTE,image);
-        //Generowanie kilku obrazów o różnych rozmiarach w zaleznosci od odleglosci
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }else{
-        std::cout << "ERROR::TEXUTRE LOADING" << "\n";
-    }
-
-    glActiveTexture(0);
-    //Wyłączenie tekstury
-    glBindTexture(GL_TEXTURE_2D,0);
-    stbi_image_free(image);
-
-    //TEXTURE 1
-    //Id textury
-    GLuint texture1;
-    //Generowanie tekstury
-    glGenTextures(1,&texture1);
-    //Wybranie tekstury
-    glBindTexture(GL_TEXTURE_2D,texture1);
-
-    //Powtarzanie tekstury
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
-    //Antyaliasing i inne takie
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-
-    int image_width1, image_height1, channels1 ;
-    unsigned char* image1 = stbi_load("../Images/awesomeface.png",&image_width1,&image_height1,&channels1,STBI_rgb_alpha);
-
-    if(image1)
-    {
-        glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,image_width1,image_height1,0,GL_RGBA,GL_UNSIGNED_BYTE,image1);
-        //Generowanie kilku obrazów o różnych rozmiarach w zaleznosci od odleglosci
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }else{
-        std::cout << "ERROR::TEXUTRE LOADING" << "\n";
-    }
-
-    glActiveTexture(0);
-    //Wyłączenie tekstury
-    glBindTexture(GL_TEXTURE_2D,0);
-    stbi_image_free(image1);
+    //TEXTURE
+    Texture texture0("../Images/wood.png",GL_TEXTURE_2D,0);
+    Texture texture1("../Images/awesomeface.png",GL_TEXTURE_2D,1);
 
     //MATRIX
     glm::vec3 position(0.f);
@@ -324,14 +264,10 @@ int main( void )
         //Czyszczenie buforwa koloru, szablonu i głębokości
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-
-        //DRAW
-        core.use();
-
         //UNIFORMS UPDATE
         //Potrzebne by nakładać kolejne tekstury
-        core.set1i(0,"texture0");
-        core.set1i(1,"texture1");
+        core.set1i(texture0.getTextureUnit(),"texture0");
+        core.set1i(texture1.getTextureUnit(),"texture1");
 
         //Operacje
         //rotation.y += 2.f;
@@ -359,10 +295,8 @@ int main( void )
         core.use();
 
         //Aktywowanie tekstury
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D,texture0);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D,texture1);
+        texture0.bind();
+        texture1.bind();
 
         //Znajdowanie tablicy wierzechołków
         glBindVertexArray(VAO);
