@@ -140,22 +140,26 @@ int main( void )
 
     //MESH
 
-    Primitives test = Quad();
+    Primitives test = Pyramid();
+    std::cout<<test.getNrOfVertices()<<std::endl;
+    std::cout<<test.getVertices()<<std::endl;
+    std::cout<<test.getIndices()<<std::endl;
+    std::cout<<test.getNrOfIndices()<<std::endl;
 
-    Mesh quad(&test,
-              glm::vec3(0.f),
-              glm::vec3(0.f),
-              glm::vec3(1.f)
-    );
-
-//    Mesh quad(vertices,
-//              nrOfVertices,
-//              indices,
-//              nrOfIndices,
+//    Mesh quad(&test,
 //              glm::vec3(0.f),
 //              glm::vec3(0.f),
 //              glm::vec3(1.f)
 //    );
+
+    Mesh quad(test.getVertices(),
+              test.getNrOfVertices(),
+              test.getIndices(),
+              test.getNrOfIndices(),
+              glm::vec3(0.f),
+              glm::vec3(0.f),
+              glm::vec3(1.f)
+    );
 
     //TEXTURE
     Texture texture0("../Images/wood.png",GL_TEXTURE_2D,0);

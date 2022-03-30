@@ -28,7 +28,10 @@ Mesh::Mesh(Primitives* primitive, glm::vec3 position, glm::vec3 rotation, glm::v
 Mesh::~Mesh() {
     glDeleteVertexArrays(1, &this->VAO);
     glDeleteBuffers(1, &this->VBO);
-    glDeleteBuffers(1, &this->EBO);
+    if (this->nrOfIndices > 0)
+    {
+        glDeleteBuffers(1, &this->EBO);
+    }
 }
 
 
@@ -51,10 +54,12 @@ void Mesh::initVAO(Primitives *primitives) {
 
     //EBO
     //Do indeksowania
-    glGenBuffers(1, &this->EBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->nrOfIndices * sizeof(GLuint), primitives->getIndices(), GL_STATIC_DRAW);
-
+    if (this->nrOfIndices > 0) {
+        glGenBuffers(1, &this->EBO);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->nrOfIndices * sizeof(GLuint), primitives->getIndices(),
+                     GL_STATIC_DRAW);
+    }
     //POSITION
     //Jak będziemy używać danych wejściowych
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, position));
@@ -92,10 +97,11 @@ void Mesh::initVAO(Vertex *vertexArray, const unsigned int &nrOfVertices, GLuint
 
     //EBO
     //Do indeksowania
-    glGenBuffers(1, &this->EBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->nrOfIndices * sizeof(GLuint), indexArray, GL_STATIC_DRAW);
-
+    if (this->nrOfIndices > 0) {
+        glGenBuffers(1, &this->EBO);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->nrOfIndices * sizeof(GLuint), indexArray, GL_STATIC_DRAW);
+    }
     //POSITION
     //Jak będziemy używać danych wejściowych
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, position));
@@ -168,5 +174,9 @@ void Mesh::render(Shader *shader) {
     glBindVertexArray(this->VAO);
 
     //Rysowania elementów
-    glDrawElements(GL_TRIANGLES, this->nrOfIndices, GL_UNSIGNED_INT, 0);
+    if (this->nrOfIndices == 0) {
+        glDrawArrays(GL_TRIANGLES, 0, this->nrOfVertices);
+    }else {
+        glDrawElements(GL_TRIANGLES, this->nrOfIndices, GL_UNSIGNED_INT, 0);
+    }
 }
