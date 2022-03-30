@@ -138,42 +138,24 @@ int main( void )
     //INIT SHADER
     Shader core("TransformVertexShader.vertexshader","TextureFragmentShader.fragmentshader");
 
-    //Tablica wierzchołków
-    Vertex vertices[] =
-            {
-                    //Position								        //Color							        //Texcoords					    //Normals
-                    glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
-                    glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-                    glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-                    glm::vec3(0.5f, 0.5f, 0.f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)
-            };
-    //Obliczanie ilości wierzchołków
-    unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
-    //Indeksy do określania przy rysowaniu które wierzchołki użyć by nie było duplikatów
-    GLuint indices[] =
-            {
-                    0, 1, 2,	//Trójkąt 1
-                    0, 2, 3		//Trójkąt 2
-            };
-    //Obliczanie ilości indeksów
-    unsigned nrOfIndices = sizeof(indices) / sizeof(GLuint);
-
-
     //MESH
-//    Mesh quad(&Quad(),
-//              glm::vec3(0.f),
-//              glm::vec3(0.f),
-//              glm::vec3(1.f)
-//    );
 
-    Mesh quad(vertices,
-              nrOfVertices,
-              indices,
-              nrOfIndices,
+    Primitives test = Quad();
+
+    Mesh quad(&test,
               glm::vec3(0.f),
               glm::vec3(0.f),
               glm::vec3(1.f)
     );
+
+//    Mesh quad(vertices,
+//              nrOfVertices,
+//              indices,
+//              nrOfIndices,
+//              glm::vec3(0.f),
+//              glm::vec3(0.f),
+//              glm::vec3(1.f)
+//    );
 
     //TEXTURE
     Texture texture0("../Images/wood.png",GL_TEXTURE_2D,0);

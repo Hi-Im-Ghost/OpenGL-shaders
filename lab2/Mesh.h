@@ -46,7 +46,7 @@ private:
 
     glm::mat4 ModelMatrix;
     //Metoda do tworzenia bufforów i konfiguracja dla danego primitywu
-    void initVAO(Primitives* primitives);
+    void initVAO(Primitives *primitives);
     //Metoda do tworzenia bufforów i konfiguracja dla dowolnej tablicy wierzchołków
     void initVAO(Vertex* vertexArray, const unsigned& nrOfVertices, GLuint* indexArray, const unsigned& nrOfIndices);
 

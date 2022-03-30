@@ -40,13 +40,22 @@ public:
     void set(const Vertex* vertices, const unsigned nrOfVertices, const GLuint* indices, const unsigned nrOfIndices);
 
     //Metoda do pobierania wierzchołków
-    inline Vertex* getVertices();
+    inline Vertex* getVertices(){
+        return this->vertices.data();
+    };
     //Metoda do pobierania indeksów
-    inline GLuint* getIndices();
+    inline GLuint* getIndices(){
+        return this->indices.data();
+    };
     //Metoda do pobierania ilości wierzchołków
-    inline const unsigned getNrOfVertices();
+    inline const unsigned getNrOfVertices(){
+        return this->vertices.size();
+    };
     //Metoda do pobierania ilości indeksów
-    inline const unsigned getNrOfIndices();
+    inline const unsigned getNrOfIndices()
+    {
+        return this->indices.size();
+    };
 };
 
 class Triangle : public Primitives

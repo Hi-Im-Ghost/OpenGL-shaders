@@ -13,22 +13,6 @@ void Primitives::set(const Vertex *vertices, const unsigned int nrOfVertices, co
 
 }
 
-Vertex *Primitives::getVertices() {
-    return this->vertices.data();
-}
-
-GLuint *Primitives::getIndices() {
-    return this->indices.data();
-}
-
-const unsigned Primitives::getNrOfVertices() {
-    return this->vertices.size();
-}
-
-const unsigned Primitives::getNrOfIndices() {
-    return this->indices.size();
-}
-
 
 Quad::Quad(): Primitives() {
     //Tablica wierzchołków
@@ -38,15 +22,15 @@ Quad::Quad(): Primitives() {
                     glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
                     glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
                     glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-                    glm::vec3(0.5f, 0.5f, 0.f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)
+                    glm::vec3(0.5f, 0.5f, 0.f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),	    glm::vec3(0.f, 0.f, 1.f)
             };
     //Obliczanie ilości wierzchołków
     unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
     //Indeksy do określania przy rysowaniu które wierzchołki użyć by nie było duplikatów
     GLuint indices[] =
             {
-                    0, 1, 2,	//Trójkąt 1
-                    0, 2, 3		//Trójkąt 2
+                    0, 1, 2,
+                    0, 2, 3
             };
     //Obliczanie ilości indeksów
     unsigned nrOfIndices = sizeof(indices) / sizeof(GLuint);
