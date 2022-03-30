@@ -45,6 +45,12 @@ void updateInput(GLFWwindow* window,Mesh &mesh)
     if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
         mesh.move(glm::vec3(0.01f, 0.f, 0.f));
     }
+    if(glfwGetKey(window,GLFW_KEY_U) == GLFW_PRESS){
+        mesh.move(glm::vec3(0.0f, 0.01f, 0.f));
+    }
+    if(glfwGetKey(window,GLFW_KEY_J) == GLFW_PRESS){
+        mesh.move(glm::vec3(0.0f, -0.01f, 0.f));
+    }
     if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS){
         mesh.rotate(glm::vec3(0.f, -1.f, 0.f));
     }
@@ -52,10 +58,10 @@ void updateInput(GLFWwindow* window,Mesh &mesh)
         mesh.rotate(glm::vec3(0.f, 1.f, 0.f));
     }
     if(glfwGetKey(window,GLFW_KEY_Z) == GLFW_PRESS){
-        mesh.scaleUp(glm::vec3(1.f));
+        mesh.scaleUp(glm::vec3(0.5f));
     }
     if(glfwGetKey(window,GLFW_KEY_X) == GLFW_PRESS){
-        mesh.scaleUp(glm::vec3(-1.f));
+        mesh.scaleUp(glm::vec3(-0.5f));
     }
 }
 
@@ -161,15 +167,34 @@ int main( void )
               glm::vec3(1.f)
     );
 
+    Mesh quad1(test.getVertices(),
+              test.getNrOfVertices(),
+              test.getIndices(),
+              test.getNrOfIndices(),
+              glm::vec3(3.f,1.f,-2.f),
+              glm::vec3(0.f),
+              glm::vec3(2.f)
+    );
+
+
+    Mesh quad2(test.getVertices(),
+              test.getNrOfVertices(),
+              test.getIndices(),
+              test.getNrOfIndices(),
+              glm::vec3(-3.f,1.f,-7.f),
+              glm::vec3(90.f),
+              glm::vec3(3.f)
+    );
+
     //TEXTURE
     Texture texture0("../Images/wood.png",GL_TEXTURE_2D,0);
     Texture texture1("../Images/awesomeface.png",GL_TEXTURE_2D,1);
 
 
     //CAMERA
-    glm::vec3 camPos(0.f,0.f,1.f);
+    glm::vec3 camPos(0.0f,1.f,1.5f);
     //Wektor skierowany w góre
-    glm::vec3 worldUP = glm::vec3(0.f,1.f,0.f);
+    glm::vec3 worldUP = glm::vec3(0.0f,1.f,0.0f);
     //Wektor skierowany w przód
     glm::vec3 worldFront = glm::vec3(0.f,0.f,-1.f);
     glm::mat4 ViewMatrix(1.f);
@@ -232,6 +257,8 @@ int main( void )
 
         //Narysuj element
         quad.render(&core);
+        quad1.render(&core);
+        quad2.render(&core);
 
         //END
         //Zmiana bufforów i opróźnianie
