@@ -74,4 +74,17 @@ class Pyramid : public Primitives
 {
 public:
     Pyramid();
+
+};
+
+class Plate: public Primitives
+{
+public:
+    Plate();
+};
+
+class Cube: public Primitives
+{
+public:
+    Cube();
 };

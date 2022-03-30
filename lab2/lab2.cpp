@@ -146,11 +146,19 @@ int main( void )
 
     //MESH
 
-    Primitives test = Pyramid();
-    std::cout<<test.getNrOfVertices()<<std::endl;
-    std::cout<<test.getVertices()<<std::endl;
-    std::cout<<test.getIndices()<<std::endl;
-    std::cout<<test.getNrOfIndices()<<std::endl;
+    Primitives pyramide = Pyramid();
+    std::cout<<"PYRAMID"<<std::endl;
+    std::cout<<pyramide.getNrOfVertices()<<std::endl;
+    std::cout<<pyramide.getVertices()<<std::endl;
+    std::cout<<pyramide.getIndices()<<std::endl;
+    std::cout<<pyramide.getNrOfIndices()<<std::endl;
+
+    Primitives plates = Plate();
+    std::cout<<"PLATE"<<std::endl;
+    std::cout<<plates.getNrOfVertices()<<std::endl;
+    std::cout<<plates.getVertices()<<std::endl;
+    std::cout<<plates.getIndices()<<std::endl;
+    std::cout<<plates.getNrOfIndices()<<std::endl;
 
 //    Mesh quad(&test,
 //              glm::vec3(0.f),
@@ -158,32 +166,41 @@ int main( void )
 //              glm::vec3(1.f)
 //    );
 
-    Mesh quad(test.getVertices(),
-              test.getNrOfVertices(),
-              test.getIndices(),
-              test.getNrOfIndices(),
+    Mesh pyramid(pyramide.getVertices(),
+                 pyramide.getNrOfVertices(),
+                 pyramide.getIndices(),
+                 pyramide.getNrOfIndices(),
               glm::vec3(0.f),
               glm::vec3(0.f),
               glm::vec3(1.f)
     );
 
-    Mesh quad1(test.getVertices(),
-              test.getNrOfVertices(),
-              test.getIndices(),
-              test.getNrOfIndices(),
+    Mesh pyramid1(pyramide.getVertices(),
+                  pyramide.getNrOfVertices(),
+                  pyramide.getIndices(),
+                  pyramide.getNrOfIndices(),
               glm::vec3(3.f,1.f,-2.f),
               glm::vec3(0.f),
               glm::vec3(2.f)
     );
 
 
-    Mesh quad2(test.getVertices(),
-              test.getNrOfVertices(),
-              test.getIndices(),
-              test.getNrOfIndices(),
+    Mesh pyramid2(pyramide.getVertices(),
+                  pyramide.getNrOfVertices(),
+                  pyramide.getIndices(),
+                  pyramide.getNrOfIndices(),
               glm::vec3(-3.f,1.f,-7.f),
               glm::vec3(90.f),
               glm::vec3(3.f)
+    );
+
+    Mesh plate(plates.getVertices(),
+               plates.getNrOfVertices(),
+               plates.getIndices(),
+               plates.getNrOfIndices(),
+                 glm::vec3(-1.f),
+                 glm::vec3(0.f),
+                 glm::vec3(1.f)
     );
 
     //TEXTURE
@@ -225,7 +242,7 @@ int main( void )
         //Pozwolenie na interakcji kursorowi
         glfwPollEvents();
         //Poruszanie
-        updateInput(window,quad);
+        updateInput(window,pyramid);
         //ESC
         updateInput(window);
 
@@ -256,9 +273,10 @@ int main( void )
 
 
         //Narysuj element
-        quad.render(&core);
-        quad1.render(&core);
-        quad2.render(&core);
+        pyramid.render(&core);
+        pyramid1.render(&core);
+        pyramid2.render(&core);
+        plate.render(&core);
 
         //END
         //Zmiana bufforów i opróźnianie
