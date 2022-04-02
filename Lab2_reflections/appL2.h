@@ -83,14 +83,34 @@ public:
 
         computeMatricesFromInputs();
 
+        cube.setProjectionMatrix(getProjectionMatrix());
+        cube.setViewMatrix(getViewMatrix());
+        cube.draw(MatrixID, ViewMatrixID, ModelMatrixID);
         /* Stencil / Keyhole */
         glColorMask(0,0,0,0);
         glEnable(GL_STENCIL_TEST);
 
         // Rysowanie bez żadnych warunków
         glStencilFunc(GL_ALWAYS, 1,1);
+        glStencilMask(1);
         glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
+        mirror.setProjectionMatrix(getProjectionMatrix());
+        mirror.setViewMatrix(getViewMatrix());
+        mirror.draw(MatrixID, ViewMatrixID, ModelMatrixID);
+
+        glStencilFunc(GL_EQUAL, 1, 1);
+        glStencilMask(0);
+        //glDepthMask(GL_TRUE);
+
+        /* Cube Reflection */
+        glm::mat4 cbmodmat = cube.getModelMatrix();
+        cube.translate(glm::vec3(0.0f, -3.0f, 0.0f));
+        cube.scale(glm::vec3(1, -1, 1));
+        cube.draw(MatrixID, ViewMatrixID, ModelMatrixID);
+        cube.translate(glm::vec3(0.0f, 3.0f, 0.0f));
+        cube.setModelMatrix(cbmodmat);
+        //
         glDisable(GL_DEPTH_TEST);
         keyhole.setProjectionMatrix(getProjectionMatrix());
         keyhole.setViewMatrix(getViewMatrix());
@@ -123,24 +143,14 @@ public:
         glStencilFunc(GL_NOTEQUAL, 1, 1);
         //glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
-        cube.setProjectionMatrix(getProjectionMatrix());
-        cube.setViewMatrix(getViewMatrix());
-        cube.draw(MatrixID, ViewMatrixID, ModelMatrixID);
 
-        /* Cube Reflection */
-        glm::mat4 cbmodmat = cube.getModelMatrix();
-        cube.translate(glm::vec3(0.0f, -3.0f, 0.0f));
-        cube.scale(glm::vec3(1, -1, 1));
-        cube.draw(MatrixID, ViewMatrixID, ModelMatrixID);
-        cube.translate(glm::vec3(0.0f, 3.0f, 0.0f));
-        cube.setModelMatrix(cbmodmat);
+
+
         cube.rotate(glm::vec3(0, 1, 0), 0.1);
 
         glDisable(GL_STENCIL_TEST);
         //glClear(GL_STENCIL_BUFFER_BIT);
-        mirror.setProjectionMatrix(getProjectionMatrix());
-        mirror.setViewMatrix(getViewMatrix());
-        mirror.draw(MatrixID, ViewMatrixID, ModelMatrixID);
+
         glEnable(GL_STENCIL_TEST);
 
         glStencilFunc(GL_NOTEQUAL, 1, 1);
