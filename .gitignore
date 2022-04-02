@@ -29,6 +29,7 @@
 *.app
 
 **/*.exe
+cmake-build-debug/*
 bin-*/*
 distrib/build_*/*
 **.bak
