@@ -656,6 +656,7 @@ CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\glm\vec3.hpp
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\glm\vec4.hpp
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\glm\vector_relational.hpp
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab2_reflections\appL2.h
+CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab3_perticles\appL3.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\Common\Initialize.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\Common\objloader.hpp
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\Common\shader.hpp

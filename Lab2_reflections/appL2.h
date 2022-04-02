@@ -88,8 +88,6 @@ public:
     }
 
     void update() {
-        // Włączenie rysowania i rysowanie, gdy szablon == 1
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(programID);
         glUniform3f(lightID, 2.0f, 2.0f, 2.0f);

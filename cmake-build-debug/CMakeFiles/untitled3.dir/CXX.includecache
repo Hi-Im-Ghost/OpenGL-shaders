@@ -1084,6 +1084,14 @@ C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/O
 dependeces/Common/Object.h
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/dependeces/Common/Object.h
 
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3.h
+dependeces/Common/Initialize.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Initialize.h
+dependeces/Common/controls.hpp
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/controls.hpp
+dependeces/Common/Object.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Object.h
+
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Initialize.h
 iostream
 -
@@ -1117,4 +1125,6 @@ dependeces/Common/shader.hpp
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/shader.hpp
 Lab2_reflections/appL2.h
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/appL2.h
+Lab3_perticles/appL3.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3.h
 
