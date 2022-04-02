@@ -9,7 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/stb_image.c" "C:/Users/ACER/Documents/PGK/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/stb_image.c.obj"
+  "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/stb_image.c" "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/stb_image.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "MSVC")
 
@@ -20,12 +20,12 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../dependeces/glm/.."
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/Initialize.cpp" "C:/Users/ACER/Documents/PGK/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/Initialize.cpp.obj"
-  "C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/Object.cpp" "C:/Users/ACER/Documents/PGK/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/Object.cpp.obj"
-  "C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/controls.cpp" "C:/Users/ACER/Documents/PGK/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/controls.cpp.obj"
-  "C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/objloader.cpp" "C:/Users/ACER/Documents/PGK/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/objloader.cpp.obj"
-  "C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/shader.cpp" "C:/Users/ACER/Documents/PGK/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/shader.cpp.obj"
-  "C:/Users/ACER/Documents/PGK/OpenGL-shaders/main.cpp" "C:/Users/ACER/Documents/PGK/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/main.cpp.obj"
+  "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Initialize.cpp" "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/Initialize.cpp.obj"
+  "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Object.cpp" "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/Object.cpp.obj"
+  "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/controls.cpp" "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/controls.cpp.obj"
+  "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/objloader.cpp" "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/objloader.cpp.obj"
+  "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/shader.cpp" "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/dependeces/Common/shader.cpp.obj"
+  "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/main.cpp" "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/CMakeFiles/untitled3.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 

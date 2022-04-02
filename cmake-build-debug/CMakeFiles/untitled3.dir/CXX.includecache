@@ -1076,15 +1076,15 @@ detail/setup.hpp
 detail/func_vector_relational.inl
 ../dependeces/glm/detail/func_vector_relational.inl
 
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/Lab2_reflections/appL2.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/appL2.h
 dependeces/Common/Initialize.h
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/Lab2_reflections/dependeces/Common/Initialize.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/dependeces/Common/Initialize.h
 dependeces/Common/controls.hpp
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/Lab2_reflections/dependeces/Common/controls.hpp
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/dependeces/Common/controls.hpp
 dependeces/Common/Object.h
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/Lab2_reflections/dependeces/Common/Object.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/dependeces/Common/Object.h
 
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/Initialize.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Initialize.h
 iostream
 -
 GLFW/glfw3.h
@@ -1092,11 +1092,11 @@ GLFW/glfw3.h
 GL/glew.h
 -
 
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/objloader.hpp
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/objloader.hpp
 
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/shader.hpp
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/shader.hpp
 
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/main.cpp
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/main.cpp
 iostream
 -
 cstdio
@@ -1108,13 +1108,13 @@ iostream
 vector
 -
 dependeces/Common/Initialize.h
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/Initialize.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Initialize.h
 glm/glm.hpp
 -
 dependeces/Common/objloader.hpp
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/objloader.hpp
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/objloader.hpp
 dependeces/Common/shader.hpp
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/dependeces/Common/shader.hpp
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/shader.hpp
 Lab2_reflections/appL2.h
-C:/Users/ACER/Documents/PGK/OpenGL-shaders/Lab2_reflections/appL2.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/appL2.h
 

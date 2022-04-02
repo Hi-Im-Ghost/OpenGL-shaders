@@ -46,10 +46,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ACER\Documents\PGK\OpenGL-shaders
+CMAKE_SOURCE_DIR = "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -76,9 +76,9 @@ rebuild_cache\fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\CMakeFiles C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target

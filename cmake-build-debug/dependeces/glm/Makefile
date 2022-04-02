@@ -46,10 +46,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ACER\Documents\PGK\OpenGL-shaders
+CMAKE_SOURCE_DIR = "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -76,18 +76,18 @@ rebuild_cache\fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\CMakeFiles C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\dependeces\glm\\CMakeFiles\progress.marks
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\dependeces\glm\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) dependeces\glm\all
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\dependeces\glm
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\CMakeFiles 0
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1\DEPEND~1\glm
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) dependeces\glm\clean
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\dependeces\glm
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1\DEPEND~1\glm
 .PHONY : clean
 
 # The main clean target
@@ -96,23 +96,23 @@ clean\fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) dependeces\glm\preinstall
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\dependeces\glm
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1\DEPEND~1\glm
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall\fast:
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) dependeces\glm\preinstall
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\dependeces\glm
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1\DEPEND~1\glm
 .PHONY : preinstall\fast
 
 # clear depends
 depend:
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\dependeces\glm
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1\DEPEND~1\glm
 .PHONY : depend
 
 # Help Target
@@ -134,8 +134,8 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
-	cd C:\Users\ACER\Documents\PGK\OpenGL-shaders\cmake-build-debug\dependeces\glm
+	cd C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\CMAKE-~1\DEPEND~1\glm
 .PHONY : cmake_check_build_system
 
