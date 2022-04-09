@@ -86,7 +86,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3.h">
+		<Unit filename="C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_rain.h">
 			<Option target="untitled3"/>
 		</Unit>
 		<Unit filename="C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Initialize.cpp">

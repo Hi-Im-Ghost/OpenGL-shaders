@@ -31,5 +31,5 @@ add_executable(untitled3 main.cpp
         dependeces/Common/Object.h
         dependeces/Common/shader.cpp
         dependeces/Common/shader.hpp
-        src/Lab02Zad1.h Lab3_perticles/appL3.h)
+        src/Lab02Zad1.h Lab3_perticles/appL3_rain.h)
 target_link_libraries(${PROJECT_NAME} glew32s glew32 OpenGL32 glfw3 glm)

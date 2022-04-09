@@ -13,10 +13,10 @@ using namespace glm;
 #include "dependeces/Common/shader.hpp"
 
 #include "Lab2_reflections/appL2.h"
-#include "Lab3_perticles/appL3.h"
+#include "Lab3_perticles/appL3_rain.h"
 
 int main() {
-    appL3 app;
+    appL3_rain app;
     app.setUp();
     do {
         app.update();
