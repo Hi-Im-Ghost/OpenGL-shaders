@@ -30,7 +30,7 @@ public:
     ~appL3_smoke() = default;
 
     void setUp() {
-        window = initGLFW(1024, 768, "Rain", nullptr, nullptr);
+        window = initGLFW(1024, 768, "Smoke", nullptr, nullptr);
         if (window != nullptr) initGLEW();
 
         glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
@@ -38,7 +38,7 @@ public:
 
         glfwPollEvents();
         glfwSetCursorPos(window, 1024 / 2, 768 / 2);
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
         glEnable(GL_DEPTH_TEST);
 
@@ -58,7 +58,7 @@ public:
         lightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 
         GLint out[2];
-        LoadTexture(programID,"resource/rain.png","myTextureSampler",out);
+        LoadTexture(programID,"resource/smoke.png","myTextureSampler",out);
         particle=out[1];
         TextureID = out[0];
 
@@ -120,25 +120,25 @@ public:
 
             particleIndex = FindUnusedParticle();
 
-            particleSetLife(5.0f); // Czas zycia czasteczki
-            particleSetPos(rand()%30,0,rand()%30); //Pozycja emitera
+            particleSetLife(4.0f); // Czas zycia czasteczki
+            particleSetPos(rand()%5,-2,rand()%5); //Pozycja emitera
 
             //Okreslenei kierunku spadania czasteczek (tworzenie w ktorym miejscu)
-            maindir = glm::vec3(0.0f, -10.0f, 0.0f);
+            maindir = glm::vec3(0.0f, 5.0f, 0.0f);
             //Ustawianie pozycji losowej pojawiania sie czasteczek
             randomdir = glm::vec3(
                     (rand()%2000 - 1000.0f)/1000.0f,
                     (rand()%2000 - 1000.0f)/1000.0f,
                     (rand()%2000 - 1000.0f)/1000.0f
             );
-
+            //Nadanie predkosci czasteczka w okreslonym kierunku
             ParticlesContainer[particleIndex].speed = maindir *spread ;
 
 
             //Ustawianie kolorow
-            particleSetColor(0,0,254,254);
+            particleSetColor(0,0,0,254);
             //Wielkosc czasteczki
-            particleSetSize(0.5f);
+            particleSetSize(2.0f);
 
         }
 
@@ -155,7 +155,7 @@ public:
                 if (p.life > 0.0f){
 
                     // Symulowanie grawitacji
-                    p.speed += glm::vec3(0.0f,-9.81f, 0.0f) * (float)delta * 0.5f;
+                    p.speed += glm::vec3(0.0f,9.81f, 0.0f) * (float)delta * 0.5f;
                     p.pos += p.speed * (float)delta;
                     p.cameradistance = glm::length2( p.pos - CameraPosition);
                     //ParticlesContainer[i].pos += glm::vec3(0.0f,10.0f, 0.0f) * (float)delta;
