@@ -1406,6 +1406,8 @@ C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/O
 dependeces/Common/Object.h
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/dependeces/Common/Object.h
 
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/Particle.h
+
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_rain.h
 algorithm
 -
@@ -1417,6 +1419,22 @@ dependeces/Common/controls.hpp
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/controls.hpp
 dependeces/Common/Object.h
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Object.h
+Particle.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/Particle.h
+
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_smoke.h
+algorithm
+-
+gl/GL.h
+-
+dependeces/Common/Initialize.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Initialize.h
+dependeces/Common/controls.hpp
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/controls.hpp
+dependeces/Common/Object.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Object.h
+Particle.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/Particle.h
 
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Initialize.h
 stdio.h
@@ -1463,4 +1481,6 @@ Lab2_reflections/appL2.h
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/appL2.h
 Lab3_perticles/appL3_rain.h
 C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_rain.h
+Lab3_perticles/appL3_smoke.h
+C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_smoke.h
 

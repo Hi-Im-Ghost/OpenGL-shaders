@@ -1,5 +1,5 @@
-#ifndef UNTITLED3_APPL3_RAIN_H
-#define UNTITLED3_APPL3_RAIN_H
+#ifndef UNTITLED3_APPL3_SMOKE_H
+#define UNTITLED3_APPL3_SMOKE_H
 
 #include <algorithm>
 #include <gl/GL.h>
@@ -8,7 +8,7 @@
 #include "dependeces/Common/Object.h"
 #include "Particle.h"
 
-class appL3_rain : Particles{
+class appL3_smoke : Particles{
 private:
     GLuint programID;
     GLuint TextureID;
@@ -26,8 +26,8 @@ private:
 
 public:
 
-    appL3_rain(){};
-    ~appL3_rain() = default;
+    appL3_smoke(){};
+    ~appL3_smoke() = default;
 
     void setUp() {
         window = initGLFW(1024, 768, "Rain", nullptr, nullptr);
