@@ -89,6 +89,9 @@
 		<Unit filename="C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/Particle.h">
 			<Option target="untitled3"/>
 		</Unit>
+		<Unit filename="C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_fog.h">
+			<Option target="untitled3"/>
+		</Unit>
 		<Unit filename="C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_rain.h">
 			<Option target="untitled3"/>
 		</Unit>

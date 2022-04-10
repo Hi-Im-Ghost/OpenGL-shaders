@@ -890,6 +890,7 @@ CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\glm\vec4.hpp
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\glm\vector_relational.hpp
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab2_reflections\appL2.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab3_perticles\Particle.h
+CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab3_perticles\appL3_fog.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab3_perticles\appL3_rain.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab3_perticles\appL3_smoke.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\Common\Initialize.h

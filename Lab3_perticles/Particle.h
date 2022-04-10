@@ -79,11 +79,17 @@ public:
     void particleSetSize(float size){
         ParticlesContainer[particleIndex].size = size;
     }
+    //Funkcja do ustawiania czasu zycia czasteczki
     void particleSetLife(float life){
         ParticlesContainer[particleIndex].life = life;
     }
+    //Funkcja do ustawiania pozycji emitera czasteczek
     void particleSetPos(float x,float y,float z) {
         ParticlesContainer[particleIndex].pos = glm::vec3(x,y,z);
+    }
+    //Funkcja do ustawiania kierunku z predkoscia wyrzucania czasteczek z emitera
+    void particleSetSpeed(float x,float y,float z){
+        ParticlesContainer[particleIndex].speed = glm::vec3(x,y,z) *spread;
     }
 };
 

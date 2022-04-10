@@ -15,8 +15,9 @@ using namespace glm;
 #include "Lab2_reflections/appL2.h"
 #include "Lab3_perticles/appL3_rain.h"
 #include "Lab3_perticles/appL3_smoke.h"
+#include "Lab3_perticles/appL3_fog.h"
 int main() {
-    appL3_smoke app;
+    appL3_fog app;
     app.setUp();
     do {
         app.update();
