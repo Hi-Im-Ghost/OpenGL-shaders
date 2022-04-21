@@ -23,8 +23,10 @@ protected:
     GLuint normalBuff;
 
     GLuint texture;
+    GLuint texture2;
 
     GLuint textureID;
+    GLuint textureID2;
     glm::mat4 projectionMatrix;
     glm::mat4 viewMatrix;
     glm::mat4 modelMatrix, MVP;
@@ -40,6 +42,9 @@ public:
     ~Object();
 
     bool loadTexture( GLuint shaderID, const std::string& texturePath, GLchar *name);
+    bool loadTexture2( GLuint shaderID, const std::string& texturePath, GLchar *name);
+
+
 
     void setTexture(GLuint textureID, GLuint texture);
 
@@ -58,7 +63,7 @@ public:
 
     void scale(glm::vec3 vector);
 
-    void draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bool reflected = false);
+    void draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bool reflected = false, int numberTex = 0);
 
     void setProjectionMatrix(glm::mat4 matrix) { projectionMatrix = matrix; }
 

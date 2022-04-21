@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders
+# Install script for directory: D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/dependeces/glm/cmake_install.cmake")
+  include("D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/cmake-build-debug/dependeces/glm/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

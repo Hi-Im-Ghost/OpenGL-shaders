@@ -6,12 +6,14 @@ Object::Object() {
     modelMatrix = glm::mat4(1.0);
     setReflectionVector(glm::vec3(1.0f, -1.0f, 1.0f));
     this->textureID = 0;
+    this->textureID2 = 1;
 }
 
 Object::Object(const std::string &objPath) {
     modelMatrix = glm::mat4(1.0);
     setReflectionVector(glm::vec3(1.0f, -1.0f, 1.0f));
     this->textureID = 0;
+    this->textureID2 = 1;
     initFromFile(objPath);
 }
 
@@ -70,7 +72,7 @@ bool Object::initFromFile(const std::string& path, GLuint shaderID, const std::s
     loadOBJ(path.c_str(), vertices, uvs, normals);
     this->vertexCount = vertices.size();
     this->textureID = glGetUniformLocation(shaderID, name);
-
+    this->textureID2 = glGetUniformLocation(shaderID, name);
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -92,7 +94,6 @@ bool Object::loadTexture(GLuint shaderID, const std::string& texturePath, GLchar
     bool check = true;
 
     this->textureID = glGetUniformLocation(shaderID, name);
-
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
     int width, height, nchan;
@@ -101,12 +102,42 @@ bool Object::loadTexture(GLuint shaderID, const std::string& texturePath, GLchar
         puts("Cannot load Texture");
         check = false;
     }
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, dt);
     glGenerateMipmap(GL_TEXTURE_2D);
     stbi_image_free(dt);
     return check;
 }
+
+bool Object::loadTexture2(GLuint shaderID, const std::string& texturePath, GLchar *name) {
+    bool check = true;
+
+    this->textureID2 = glGetUniformLocation(shaderID, name);
+
+    glGenTextures(1, &texture2);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    int width, height, nchan;
+    unsigned char *dt = stbi_load(texturePath.c_str(), &width, &height, &nchan, 0);
+    if (!dt) {
+        puts("Cannot load Texture");
+        check = false;
+    }
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, dt);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    stbi_image_free(dt);
+    return check;
+}
+
+
 bool Object::initFromArray(std::vector<glm::vec3> vertices, std::vector<glm::vec3> normals,
                                       std::vector<glm::vec2> uvs) {
     bool check = true;
@@ -129,10 +160,19 @@ bool Object::initFromFile(const std::string& path) {
     return check;
 }
 
-void Object::draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bool reflected) {
+void Object::draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bool reflected, int numberTex) {
+    if(1>=numberTex) {
+        glUniform1i(textureID, 0);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture);
+    }else{
     glUniform1i(textureID, 0);
+    glUniform1i(textureID, 1);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    }
 
     // Draw as reflected ?
     //glm::mat4 modelMatrix = (reflected) ? reflectionMatrix : this->modelMatrix;
@@ -202,7 +242,6 @@ void Object::initBuffers() {
 void Object::setReflectionVector(glm::vec3 newVector) {
     reflectionMatrix = glm::scale(modelMatrix, newVector);
 }
-
 bool LoadTexture(GLuint shaderID, const std::string& texturePath, GLchar *name,GLint out[2]){
     GLuint textureId ,texture;
     textureId = glGetUniformLocation(shaderID, name);

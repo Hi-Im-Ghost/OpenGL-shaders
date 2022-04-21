@@ -157,7 +157,7 @@ public:
                     // Symulowanie grawitacji
                     p.speed += glm::vec3(0.0f,9.81f, 0.0f) * (float)delta * 0.5f;
                     p.pos += p.speed * (float)delta;
-                    p.cameradistance = glm::length2( p.pos - CameraPosition);
+                    p.cameradistance = glm::length( p.pos - CameraPosition);
                     //ParticlesContainer[i].pos += glm::vec3(0.0f,10.0f, 0.0f) * (float)delta;
 
                     // Wypełnianie buffora

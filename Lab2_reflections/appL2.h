@@ -4,7 +4,6 @@
 #include "dependeces/Common/Initialize.h"
 #include "dependeces/Common/controls.hpp"
 #include "dependeces/Common/Object.h"
-GLFWwindow *window;
 
 class appL2 {
 private:

@@ -3,8 +3,7 @@
 
 #include "dependeces/Common/Initialize.h"
 #include "dependeces/Common/controls.hpp"
-#include "dependeces/Common/RenderableObject.h"
-GLFWwindow *window;
+#include "dependeces/Common/Object.h"
 
 class Lab02Zad1 {
 private:

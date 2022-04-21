@@ -8,16 +8,19 @@
 #include <glm/glm.hpp>
 
 using namespace glm;
-
+GLFWwindow *window;
 #include "dependeces/Common/objloader.hpp"
 #include "dependeces/Common/shader.hpp"
 
+//#include "Lab1/Lab02Zad1.h"
 #include "Lab2_reflections/appL2.h"
 #include "Lab3_perticles/appL3_rain.h"
 #include "Lab3_perticles/appL3_smoke.h"
 #include "Lab3_perticles/appL3_fog.h"
+#include "Lab4_textures/appL4.h"
+
 int main() {
-    appL3_fog app;
+    appL4 app;
     app.setUp();
     do {
         app.update();

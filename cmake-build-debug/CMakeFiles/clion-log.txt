@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - NMake Makefiles" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders"
+"D:\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - NMake Makefiles" "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders"
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug
+-- Build files have been written to: D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/cmake-build-debug
