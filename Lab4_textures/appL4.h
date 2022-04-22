@@ -59,21 +59,21 @@ public:
 
 
         cube.initFromFile("resource/cube.obj");
-        cube.loadTexture(programID, "resource/grass.png", "texture0");
-        cube.loadTexture2(programID, "resource/uvmap.png", "texture1");
+        cube.loadTexture(programID, "resource/grass.png", "texture0",0);
+        cube.loadTexture2(programID, "resource/uvmap.png", "texture1",0);
 
         suzie.initFromFile("resource/suzanne.obj");
-        suzie.loadTexture(programID, "resource/fog.png", "texture0");
-        suzie.loadTexture2(programID, "resource/black.png", "texture1");
+        suzie.loadTexture(programID, "resource/uvmap.png", "texture0",3);
+        //suzie.loadTexture2(programID, "resource/black.png", "texture1",1);
         suzie.translate(glm::vec3(3,0,0));
 
         lion.initFromFile("resource/Lion.obj");
-        lion.loadTexture(programID, "resource/Lion.png", "texture0");
+        lion.loadTexture(programID, "resource/Lion.png", "texture0",2);
         lion.translate(glm::vec3(-3,-1,0));
         lion.scale(glm::vec3(0.02f));
 
         avatar.initFromFile("resource/Avatar.obj");
-        avatar.loadTexture(programID, "resource/Avatar.png", "texture0");
+        avatar.loadTexture(programID, "resource/Avatar.png", "texture0",1);
         avatar.translate(glm::vec3(6,0,0));
         avatar.scale(glm::vec3(0.03f));
 
@@ -92,7 +92,7 @@ public:
 
         suzie.setProjectionMatrix(getProjectionMatrix());
         suzie.setViewMatrix(getViewMatrix());
-        suzie.draw(MatrixID, ViewMatrixID, ModelMatrixID,false,2);
+        suzie.draw(MatrixID, ViewMatrixID, ModelMatrixID,false,1);
 
         avatar.setProjectionMatrix(getProjectionMatrix());
         avatar.setViewMatrix(getViewMatrix());

@@ -1,4 +1,17 @@
-"D:\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - NMake Makefiles" "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders"
+"C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - NMake Makefiles" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders"
+-- The C compiler identification is MSVC 19.29.30137.0
+-- The CXX compiler identification is MSVC 19.29.30137.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found OpenGL: opengl32   
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/cmake-build-debug
+-- Build files have been written to: C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/cmake-build-debug

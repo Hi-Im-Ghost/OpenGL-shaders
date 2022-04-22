@@ -41,8 +41,8 @@ public:
 
     ~Object();
 
-    bool loadTexture( GLuint shaderID, const std::string& texturePath, GLchar *name);
-    bool loadTexture2( GLuint shaderID, const std::string& texturePath, GLchar *name);
+    bool loadTexture( GLuint shaderID, const std::string& texturePath, GLchar *name, int texParam = 0);
+    bool loadTexture2( GLuint shaderID, const std::string& texturePath, GLchar *name, int texParam = 0);
 
 
 
