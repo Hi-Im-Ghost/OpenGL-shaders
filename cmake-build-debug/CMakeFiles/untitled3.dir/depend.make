@@ -662,6 +662,7 @@ CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab3_perticles\appL3_rain.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab3_perticles\appL3_smoke.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab4_textures\appL4.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab5_Shaders\appL5.h
+CMakeFiles\untitled3.dir\main.cpp.obj: ..\Lab6_Light\appL6.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\Common\Initialize.h
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\Common\objloader.hpp
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\dependeces\Common\shader.hpp
