@@ -18,9 +18,10 @@ GLFWwindow *window;
 #include "Lab3_perticles/appL3_smoke.h"
 #include "Lab3_perticles/appL3_fog.h"
 #include "Lab4_textures/appL4.h"
+#include "Lab5_Shaders/appL5.h"
 
 int main() {
-    appL4 app;
+    appL5 app;
     app.setUp();
     do {
         app.update();
