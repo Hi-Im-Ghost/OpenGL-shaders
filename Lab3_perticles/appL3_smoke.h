@@ -112,9 +112,9 @@ public:
         // to wygeneruje duzo czasteczek i kolejna przerwa bedzie jeszcze dluzsza
         // w skróce ustawienie generowania czasteczek czy ma powoli byc ich coraz wiecej az do limitu czy co jakis czas ma np. wszystkie mozliwe wypuscic
         // okreslenie ile powinnismy wygenrowac w kazdej klatce
-        newparticles = (int)(delta*100.0);
+        newparticles = (int)(delta*200.0);
         if (newparticles > (int)(0.016f*100.0))
-            newparticles = (int)(0.016f*100.0);
+            newparticles = (int)(0.016f*200.0);
 
         for(int i=0; i<newparticles; i++){
 
@@ -155,7 +155,7 @@ public:
                 if (p.life > 0.0f){
 
                     // Symulowanie grawitacji
-                    p.speed += glm::vec3(0.0f,9.81f, 0.0f) * (float)delta * 0.5f;
+                    p.speed += glm::vec3(10.0f,9.81f, 0.0f) * (float)delta * 0.5f;
                     p.pos += p.speed * (float)delta;
                     p.cameradistance = glm::length( p.pos - CameraPosition);
                     //ParticlesContainer[i].pos += glm::vec3(0.0f,10.0f, 0.0f) * (float)delta;
@@ -170,7 +170,7 @@ public:
                     g_particule_color_data[4*ParticlesCount+0] = p.r;
                     g_particule_color_data[4*ParticlesCount+1] = p.g;
                     g_particule_color_data[4*ParticlesCount+2] = p.b;
-                    g_particule_color_data[4*ParticlesCount+3] = p.a;
+                    g_particule_color_data[4*ParticlesCount+3] = p.a--;
 
                 }else{
                     // Czasteczki które umierają sa umieszczone na końcu bufora podczas sortowania
@@ -178,7 +178,6 @@ public:
                 }
 
                 ParticlesCount++;
-
             }
         }
 
@@ -248,6 +247,8 @@ public:
                 0,                                // stride
                 (void*)0                          // array buffer offset
         );
+
+
 
         // glDrawArrays*Instanced*.
         // Pierwszym parametr, bufor atrybutów, o którym mówimy

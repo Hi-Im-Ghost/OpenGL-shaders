@@ -33,19 +33,19 @@ NULL=nul
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders"
+CMAKE_SOURCE_DIR = "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug"
+CMAKE_BINARY_DIR = "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles\untitled3.dir\depend.make
@@ -57,135 +57,135 @@ include CMakeFiles\untitled3.dir\flags.make
 
 CMakeFiles\untitled3.dir\main.cpp.obj: CMakeFiles\untitled3.dir\flags.make
 CMakeFiles\untitled3.dir\main.cpp.obj: ..\main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/untitled3.dir/main.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\main.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/untitled3.dir/main.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\main.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\main.cpp"
 <<
 
 CMakeFiles\untitled3.dir\main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled3.dir/main.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\main.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\main.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\main.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\main.cpp"
 <<
 
 CMakeFiles\untitled3.dir\main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled3.dir/main.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\main.cpp.s /c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\main.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\main.cpp.s /c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\main.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.obj: CMakeFiles\untitled3.dir\flags.make
 CMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.obj: ..\dependeces\Common\Initialize.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/Initialize.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\Initialize.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/Initialize.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\Initialize.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled3.dir/dependeces/Common/Initialize.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\Initialize.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\Initialize.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled3.dir/dependeces/Common/Initialize.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.s /c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\Initialize.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\Initialize.cpp.s /c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\Initialize.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.obj: CMakeFiles\untitled3.dir\flags.make
 CMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.obj: ..\dependeces\Common\controls.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/controls.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\controls.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/controls.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\controls.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled3.dir/dependeces/Common/controls.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\controls.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\controls.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled3.dir/dependeces/Common/controls.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.s /c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\controls.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\controls.cpp.s /c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\controls.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.obj: CMakeFiles\untitled3.dir\flags.make
 CMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.obj: ..\dependeces\Common\stb_image.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/untitled3.dir/dependeces/Common/stb_image.c.obj"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.obj /FdCMakeFiles\untitled3.dir\ /FS -c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\stb_image.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/untitled3.dir/dependeces/Common/stb_image.c.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.obj /FdCMakeFiles\untitled3.dir\ /FS -c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\stb_image.c"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/untitled3.dir/dependeces/Common/stb_image.c.i"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.i @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\stb_image.c"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.i @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\stb_image.c"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/untitled3.dir/dependeces/Common/stb_image.c.s"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.s /c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\stb_image.c"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\stb_image.c.s /c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\stb_image.c"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.obj: CMakeFiles\untitled3.dir\flags.make
 CMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.obj: ..\dependeces\Common\objloader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/objloader.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\objloader.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/objloader.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\objloader.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled3.dir/dependeces/Common/objloader.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\objloader.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\objloader.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled3.dir/dependeces/Common/objloader.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.s /c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\objloader.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\objloader.cpp.s /c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\objloader.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.obj: CMakeFiles\untitled3.dir\flags.make
 CMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.obj: ..\dependeces\Common\Object.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/Object.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\Object.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/Object.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\Object.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled3.dir/dependeces/Common/Object.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\Object.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\Object.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled3.dir/dependeces/Common/Object.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.s /c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\Object.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.s /c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\Object.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.obj: CMakeFiles\untitled3.dir\flags.make
 CMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.obj: ..\dependeces\Common\shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/shader.cpp.obj"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\shader.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/untitled3.dir/dependeces/Common/shader.cpp.obj"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.obj /FdCMakeFiles\untitled3.dir\ /FS -c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\shader.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled3.dir/dependeces/Common/shader.cpp.i"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\shader.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe > CMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\shader.cpp"
 <<
 
 CMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled3.dir/dependeces/Common/shader.cpp.s"
-	C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.s /c "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\dependeces\Common\shader.cpp"
+	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.s /c "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\dependeces\Common\shader.cpp"
 <<
 
 # Object files for target untitled3
@@ -210,9 +210,9 @@ untitled3.exe: CMakeFiles\untitled3.dir\dependeces\Common\Object.cpp.obj
 untitled3.exe: CMakeFiles\untitled3.dir\dependeces\Common\shader.cpp.obj
 untitled3.exe: CMakeFiles\untitled3.dir\build.make
 untitled3.exe: CMakeFiles\untitled3.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable untitled3.exe"
-	"C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\untitled3.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~3\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\untitled3.dir\objects1.rsp @<<
- /out:untitled3.exe /implib:untitled3.lib /pdb:"C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\untitled3.pdb" /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console   -LIBPATH:C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\DEPEND~1\glfw\LI0A5A~1  -LIBPATH:C:\Users\R2-D2\Desktop\STUDIA\SE489B~1\PROGRA~1\Lab\OPENGL~1\DEPEND~1\glew\lib\Release\x64  glew32s.lib glew32.lib OpenGL32.lib glfw3.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable untitled3.exe"
+	"D:\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\untitled3.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100220~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100220~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\untitled3.dir\objects1.rsp @<<
+ /out:untitled3.exe /implib:untitled3.lib /pdb:"D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\untitled3.pdb" /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console   -LIBPATH:D:\Dokumenty\studia\SEMEST~1\PROGRA~1\Lab\OPENGL~1\OPENGL~1\DEPEND~1\glfw\LI0A5A~1  -LIBPATH:D:\Dokumenty\studia\SEMEST~1\PROGRA~1\Lab\OPENGL~1\OPENGL~1\DEPEND~1\glew\lib\Release\x64  glew32s.lib glew32.lib OpenGL32.lib glfw3.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
 
 # Rule to build all files generated by this target.
@@ -224,6 +224,6 @@ CMakeFiles\untitled3.dir\clean:
 .PHONY : CMakeFiles\untitled3.dir\clean
 
 CMakeFiles\untitled3.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug" "C:\Users\R2-D2\Desktop\STUDIA\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shaders\cmake-build-debug\CMakeFiles\untitled3.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders" "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders" "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug" "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug" "D:\Dokumenty\studia\Semestr 6\Programowanie grafiki komputerowej\Lab\OpenGL-shader\OpenGL-shaders\cmake-build-debug\CMakeFiles\untitled3.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles\untitled3.dir\depend
 

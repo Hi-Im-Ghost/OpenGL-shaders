@@ -57,8 +57,8 @@ public:
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(programID);
         //Pozycja światła
+        //glUniform3f(lightID, getPosition().x,getPosition().y,getPosition().z);
         glUniform3f(lightID, 0.0f, 2.0f, -2.0f);
-
         computeMatricesFromInputs();
 
         cube.setProjectionMatrix(getProjectionMatrix());

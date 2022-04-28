@@ -454,6 +454,18 @@ cmath
 detail/func_exponential.inl
 ../dependeces/glm/detail/func_exponential.inl
 
+../dependeces/glm/ext/matrix_clip_space.hpp
+../ext/scalar_constants.hpp
+../dependeces/glm/ext/scalar_constants.hpp
+../geometric.hpp
+../dependeces/glm/geometric.hpp
+../trigonometric.hpp
+../dependeces/glm/trigonometric.hpp
+matrix_clip_space.inl
+../dependeces/glm/ext/matrix_clip_space.inl
+
+../dependeces/glm/ext/matrix_clip_space.inl
+
 ../dependeces/glm/ext/matrix_double2x2.hpp
 ../detail/type_mat2x2.hpp
 ../dependeces/glm/detail/type_mat2x2.hpp
@@ -597,6 +609,42 @@ detail/func_exponential.inl
 ../dependeces/glm/ext/matrix_float4x4_precision.hpp
 ../detail/type_mat4x4.hpp
 ../dependeces/glm/detail/type_mat4x4.hpp
+
+../dependeces/glm/ext/matrix_projection.hpp
+../gtc/constants.hpp
+../dependeces/glm/gtc/constants.hpp
+../geometric.hpp
+../dependeces/glm/geometric.hpp
+../trigonometric.hpp
+../dependeces/glm/trigonometric.hpp
+../matrix.hpp
+../dependeces/glm/matrix.hpp
+matrix_projection.inl
+../dependeces/glm/ext/matrix_projection.inl
+
+../dependeces/glm/ext/matrix_projection.inl
+
+../dependeces/glm/ext/matrix_transform.hpp
+../gtc/constants.hpp
+../dependeces/glm/gtc/constants.hpp
+../geometric.hpp
+../dependeces/glm/geometric.hpp
+../trigonometric.hpp
+../dependeces/glm/trigonometric.hpp
+../matrix.hpp
+../dependeces/glm/matrix.hpp
+matrix_transform.inl
+../dependeces/glm/ext/matrix_transform.inl
+
+../dependeces/glm/ext/scalar_constants.hpp
+../detail/setup.hpp
+../dependeces/glm/detail/setup.hpp
+scalar_constants.inl
+../dependeces/glm/ext/scalar_constants.inl
+
+../dependeces/glm/ext/scalar_constants.inl
+limits
+-
 
 ../dependeces/glm/ext/scalar_int_sized.hpp
 ../detail/setup.hpp
@@ -807,6 +855,40 @@ vector_relational.hpp
 ../dependeces/glm/vector_relational.hpp
 integer.hpp
 ../dependeces/glm/integer.hpp
+
+../dependeces/glm/gtc/constants.hpp
+../ext/scalar_constants.hpp
+../dependeces/glm/ext/scalar_constants.hpp
+constants.inl
+../dependeces/glm/gtc/constants.inl
+
+../dependeces/glm/gtc/constants.inl
+
+../dependeces/glm/gtc/matrix_transform.hpp
+../mat4x4.hpp
+../dependeces/glm/mat4x4.hpp
+../vec2.hpp
+../dependeces/glm/vec2.hpp
+../vec3.hpp
+../dependeces/glm/vec3.hpp
+../vec4.hpp
+../dependeces/glm/vec4.hpp
+../ext/matrix_projection.hpp
+../dependeces/glm/ext/matrix_projection.hpp
+../ext/matrix_clip_space.hpp
+../dependeces/glm/ext/matrix_clip_space.hpp
+../ext/matrix_transform.hpp
+../dependeces/glm/ext/matrix_transform.hpp
+matrix_transform.inl
+../dependeces/glm/gtc/matrix_transform.inl
+
+../dependeces/glm/gtc/matrix_transform.inl
+../geometric.hpp
+../dependeces/glm/geometric.hpp
+../trigonometric.hpp
+../dependeces/glm/trigonometric.hpp
+../matrix.hpp
+../dependeces/glm/matrix.hpp
 
 ../dependeces/glm/integer.hpp
 detail/qualifier.hpp
@@ -1076,71 +1158,71 @@ detail/setup.hpp
 detail/func_vector_relational.inl
 ../dependeces/glm/detail/func_vector_relational.inl
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/appL2.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab2_reflections/appL2.h
 dependeces/Common/Initialize.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/dependeces/Common/Initialize.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab2_reflections/dependeces/Common/Initialize.h
 dependeces/Common/controls.hpp
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/dependeces/Common/controls.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab2_reflections/dependeces/Common/controls.hpp
 dependeces/Common/Object.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/dependeces/Common/Object.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab2_reflections/dependeces/Common/Object.h
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/Particle.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/Particle.h
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_fog.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/appL3_fog.h
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_rain.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/appL3_rain.h
 algorithm
 -
 gl/GL.h
 -
 dependeces/Common/Initialize.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Initialize.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/dependeces/Common/Initialize.h
 dependeces/Common/controls.hpp
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/controls.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/dependeces/Common/controls.hpp
 dependeces/Common/Object.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Object.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/dependeces/Common/Object.h
 Particle.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/Particle.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/Particle.h
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_smoke.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/appL3_smoke.h
 algorithm
 -
 gl/GL.h
 -
 dependeces/Common/Initialize.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Initialize.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/dependeces/Common/Initialize.h
 dependeces/Common/controls.hpp
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/controls.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/dependeces/Common/controls.hpp
 dependeces/Common/Object.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/dependeces/Common/Object.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/dependeces/Common/Object.h
 Particle.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/Particle.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/Particle.h
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab4_textures/appL4.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab4_textures/appL4.h
 dependeces/Common/Initialize.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab4_textures/dependeces/Common/Initialize.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab4_textures/dependeces/Common/Initialize.h
 dependeces/Common/controls.hpp
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab4_textures/dependeces/Common/controls.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab4_textures/dependeces/Common/controls.hpp
 dependeces/Common/Object.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab4_textures/dependeces/Common/Object.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab4_textures/dependeces/Common/Object.h
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab5_Shaders/appL5.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab5_Shaders/appL5.h
 dependeces/Common/Initialize.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab5_Shaders/dependeces/Common/Initialize.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab5_Shaders/dependeces/Common/Initialize.h
 dependeces/Common/controls.hpp
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab5_Shaders/dependeces/Common/controls.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab5_Shaders/dependeces/Common/controls.hpp
 dependeces/Common/Object.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab5_Shaders/dependeces/Common/Object.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab5_Shaders/dependeces/Common/Object.h
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab6_Light/appL6.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab6_Light/appL6.h
 dependeces/Common/Initialize.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab6_Light/dependeces/Common/Initialize.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab6_Light/dependeces/Common/Initialize.h
 dependeces/Common/controls.hpp
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab6_Light/dependeces/Common/controls.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab6_Light/dependeces/Common/controls.hpp
 dependeces/Common/Object.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab6_Light/dependeces/Common/Object.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab6_Light/dependeces/Common/Object.h
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Initialize.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/Initialize.h
 iostream
 -
 GLFW/glfw3.h
@@ -1148,11 +1230,23 @@ GLFW/glfw3.h
 GL/glew.h
 -
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/objloader.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/controls.cpp
+GLFW/glfw3.h
+-
+glm/glm.hpp
+-
+glm/gtc/matrix_transform.hpp
+-
+controls.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/controls.hpp
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/shader.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/controls.hpp
 
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/main.cpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/objloader.hpp
+
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/shader.hpp
+
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/main.cpp
 iostream
 -
 cstdio
@@ -1164,25 +1258,25 @@ iostream
 vector
 -
 dependeces/Common/Initialize.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/Initialize.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/Initialize.h
 glm/glm.hpp
 -
 dependeces/Common/objloader.hpp
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/objloader.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/objloader.hpp
 dependeces/Common/shader.hpp
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/Common/shader.hpp
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/Common/shader.hpp
 Lab2_reflections/appL2.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab2_reflections/appL2.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab2_reflections/appL2.h
 Lab3_perticles/appL3_rain.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_rain.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/appL3_rain.h
 Lab3_perticles/appL3_smoke.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_smoke.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/appL3_smoke.h
 Lab3_perticles/appL3_fog.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab3_perticles/appL3_fog.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab3_perticles/appL3_fog.h
 Lab4_textures/appL4.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab4_textures/appL4.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab4_textures/appL4.h
 Lab5_Shaders/appL5.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab5_Shaders/appL5.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab5_Shaders/appL5.h
 Lab6_Light/appL6.h
-C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/Lab6_Light/appL6.h
+D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/Lab6_Light/appL6.h
 

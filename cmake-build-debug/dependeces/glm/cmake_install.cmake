@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/R2-D2/Desktop/STUDIA/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shaders/dependeces/glm
+# Install script for directory: D:/Dokumenty/studia/Semestr 6/Programowanie grafiki komputerowej/Lab/OpenGL-shader/OpenGL-shaders/dependeces/glm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

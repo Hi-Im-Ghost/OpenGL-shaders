@@ -47,13 +47,13 @@ void main(){
 	vec3 E = normalize(EyeDirection_cameraspace);
 
 	// Kierunek, w którym trójkąt odbija światło
-	//vec3 Ref = reflect(-l,n);
+	vec3 Ref = reflect(-l,n);
     vec3 R = normalize(reflect(light_dir,n));
 
 	// Cosinus kąta między wektorem Eye a wektorem Reflect, wyznaczonym powyżej 0,
 	//  - Patrząc w odbicie -> 1
 	//  - Patrząc gdzie indziej -> < 1
-	float cosAlpha = clamp( dot( E,R ), 0,1 );
+	float cosAlpha = clamp( dot( E,Ref ), 0,1 );
 
     float spec = max(dot(R, E), 0.0);
     float diffuse = max(dot(light_dir, n), 0.1);
@@ -62,11 +62,18 @@ void main(){
     //Intensywnosc pozycji swiecenia dla specular
     float specular_intensity = pow(max(dot(light_dir, n), 0.0), 64);
 
+
+//  Position_worldspace;
+//  Normal_cameraspace; //normal
+//  EyeDirection_cameraspace; //frag
+//  LightDirection_cameraspace; //view
+//  LightPosition_worldspace; //light pos
+
     //Blinn-Phong obliczenia
     vec3 lightDir   = normalize(LightPosition_worldspace - LightDirection_cameraspace);
     vec3 viewDir    = normalize(EyeDirection_cameraspace - LightDirection_cameraspace);
     vec3 halfwayDir = normalize(lightDir + viewDir);
-    float specBP = pow(max(dot(n, halfwayDir), 0.0), 16);
+    float specBP = pow(max(dot(E, Ref), 0.0), 16);
 
     //Phong obliczenia
     vec3 reflectDir = reflect(-lightDir, n);
@@ -93,10 +100,13 @@ void main(){
 	//Specular all
     //color = MaterialAmbientColor + MaterialDiffuseColor * diffuse + MaterialSpecularColor * specular_intensity * LightColor * LightPower;
 
+    //Specular test
+    //color =  MaterialSpecularColor * LightColor * LightPower * pow(cosAlpha,5) / (distance*distance);
+
     //Phong
-    //color = MaterialAmbientColor + MaterialDiffuseColor * LightColor * specP;
+    color = MaterialAmbientColor + MaterialDiffuseColor * LightColor * specP;
 
     //Blinn-Phong
-    color = MaterialAmbientColor + MaterialDiffuseColor * LightColor * specBP;
+    //color = MaterialAmbientColor + MaterialDiffuseColor * LightColor * specBP ;
 }
 
