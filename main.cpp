@@ -22,7 +22,7 @@ GLFWwindow *window;
 #include "Lab6_Light/appL6.h"
 
 int main() {
-    appL6 app;
+    appL3_fog app;
     app.setUp();
     do {
         app.update();

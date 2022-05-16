@@ -39,6 +39,7 @@ public:
         glfwPollEvents();
         glfwSetCursorPos(window, 1024 / 2, 768 / 2);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glfwSwapInterval(1);
 
         glEnable(GL_DEPTH_TEST);
 
@@ -155,7 +156,7 @@ public:
                 if (p.life > 0.0f){
 
                     // Symulowanie grawitacji
-                    p.speed += glm::vec3(0.0f,-9.81f, 0.0f) * (float)delta * 0.5f;
+                    p.speed += glm::vec3(0.0f,-300.0f, 0.0f) * (float)delta * 0.5f;
                     p.pos += p.speed * (float)delta;
                     p.cameradistance = glm::length( p.pos - CameraPosition);
                     //ParticlesContainer[i].pos += glm::vec3(0.0f,10.0f, 0.0f) * (float)delta;

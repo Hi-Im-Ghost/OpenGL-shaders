@@ -39,6 +39,7 @@ public:
         glfwPollEvents();
         glfwSetCursorPos(window, 1024 / 2, 768 / 2);
         glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+        glfwSwapInterval(1);
 
         glEnable(GL_DEPTH_TEST);
 
@@ -113,7 +114,7 @@ public:
         // w skróce ustawienie generowania czasteczek czy ma powoli byc ich coraz wiecej az do limitu czy co jakis czas ma np. wszystkie mozliwe wypuscic
         // okreslenie ile powinnismy wygenrowac w kazdej klatce
         newparticles = (int)(delta*200.0);
-        if (newparticles > (int)(0.016f*100.0))
+        if (newparticles > (int)(0.016f*200.0))
             newparticles = (int)(0.016f*200.0);
 
         for(int i=0; i<newparticles; i++){

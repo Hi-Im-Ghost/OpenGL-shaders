@@ -32,6 +32,7 @@ public:
         glfwPollEvents();
         glfwSetCursorPos(window, 1024 / 2, 768 / 2);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glfwSwapInterval(1);
 
         glEnable(GL_DEPTH_TEST);
 
