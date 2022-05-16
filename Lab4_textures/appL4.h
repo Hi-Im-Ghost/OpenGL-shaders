@@ -15,11 +15,13 @@ private:
     GLuint TextureID1;
     GLuint TextureID2;
     GLuint lightID;
+    GLuint tex;
 
     Object suzie;
     Object lion;
     Object avatar;
     Object cube;
+    Object frame;
 
 public:
 
@@ -36,6 +38,10 @@ public:
         glfwPollEvents();
         glfwSetCursorPos(window, 1024 / 2, 768 / 2);
         glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+        int windowWidth = 1024;
+        int windowHeight = 768;
+        glfwGetFramebufferSize(window, &windowWidth, &windowHeight);
+
 
         glEnable(GL_DEPTH_TEST);
         // Accept fragment if it's closer to the camera than the former one
@@ -50,6 +56,7 @@ public:
 
         TextureID1 = glGetUniformLocation(programID, "texture0");
         TextureID2 = glGetUniformLocation(programID, "texture1");
+        cube.isTwoTex = glGetUniformLocation(programID, "isTwoTex");
 
         // Get a handle for our "MVP" uniform
         MatrixID = glGetUniformLocation(programID, "MVP");
@@ -57,6 +64,9 @@ public:
         ModelMatrixID = glGetUniformLocation(programID, "M");
         lightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 
+        frame.initFromFile("resource/cube.obj");
+        frame.loadTexture(programID, "resource/floor.png", "texture0",4);
+        frame.translate(glm::vec3(-6,0,0));
 
         cube.initFromFile("resource/cube.obj");
         cube.loadTexture(programID, "resource/grass.png", "texture0",0);
@@ -77,13 +87,17 @@ public:
         avatar.translate(glm::vec3(6,0,0));
         avatar.scale(glm::vec3(0.03f));
 
+
     }
 
     void update() {
+
+        glBindFramebuffer(GL_FRAMEBUFFER, frame.FramebufferName);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(programID);
-        glUniform3f(lightID, 2.0f, 2.0f, 2.0f);
+        glViewport(0, 0, 256, 256);
 
+        glUniform3f(lightID, 2.0f, 2.0f, 2.0f);
         computeMatricesFromInputs();
 
         cube.setProjectionMatrix(getProjectionMatrix());
@@ -101,6 +115,35 @@ public:
         lion.setProjectionMatrix(getProjectionMatrix());
         lion.setViewMatrix(getViewMatrix());
         lion.draw(MatrixID, ViewMatrixID, ModelMatrixID,false,1);
+
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glUseProgram(programID);
+        glViewport(0, 0, 1024, 768);
+
+        glUniform3f(lightID, 2.0f, 2.0f, 2.0f);
+        computeMatricesFromInputs();
+
+        frame.setProjectionMatrix(getProjectionMatrix());
+        frame.setViewMatrix(getViewMatrix());
+        frame.draw(MatrixID,ViewMatrixID,ModelMatrixID,false,1);
+
+        cube.setProjectionMatrix(getProjectionMatrix());
+        cube.setViewMatrix(getViewMatrix());
+        cube.draw(MatrixID,ViewMatrixID,ModelMatrixID,false,2);
+
+        suzie.setProjectionMatrix(getProjectionMatrix());
+        suzie.setViewMatrix(getViewMatrix());
+        suzie.draw(MatrixID, ViewMatrixID, ModelMatrixID,false,1);
+
+        avatar.setProjectionMatrix(getProjectionMatrix());
+        avatar.setViewMatrix(getViewMatrix());
+        avatar.draw(MatrixID, ViewMatrixID, ModelMatrixID,false,1);
+
+        lion.setProjectionMatrix(getProjectionMatrix());
+        lion.setViewMatrix(getViewMatrix());
+        lion.draw(MatrixID, ViewMatrixID, ModelMatrixID,false,1);
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();

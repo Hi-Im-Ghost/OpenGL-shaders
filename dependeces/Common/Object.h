@@ -32,10 +32,18 @@ protected:
     glm::mat4 modelMatrix, MVP;
     glm::mat4 reflectionMatrix;
 
+    int windowWidth = 1024;
+    int windowHeight = 768;
+
+
 protected:
     void initBuffers();
 
 public:
+    GLuint FramebufferName;
+    GLuint renderbuffer;
+    GLuint isTwoTex;
+
     Object();
     explicit Object(const std::string& objPath);
 
