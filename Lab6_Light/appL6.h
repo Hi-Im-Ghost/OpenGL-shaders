@@ -40,7 +40,7 @@ public:
 
         programID = LoadShaders("shaders/Light.vertexshader", "shaders/Light.fragmentshader");
 
-        TextureID = glGetUniformLocation(programID, "myTextureSampler");
+        TextureID = glGetUniformLocation(programID, "texture0");
 
         // Get a handle for our "MVP" uniform
         MatrixID = glGetUniformLocation(programID, "MVP");
@@ -48,8 +48,9 @@ public:
         ModelMatrixID = glGetUniformLocation(programID, "M");
         lightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 
+        cube.isTwoTex = glGetUniformLocation(programID, "isTwoTex");
         cube.initFromFile("resource/cube.obj");
-        cube.loadTexture(programID, "resource/uvmap.png", "myTextureSampler",0);
+        cube.loadTexture(programID, "resource/uvmap.png", "texture0",0);
 
     }
 

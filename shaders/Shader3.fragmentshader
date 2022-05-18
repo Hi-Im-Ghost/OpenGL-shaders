@@ -15,7 +15,7 @@ uniform sampler2D texture0;
 uniform sampler2D texture1;
 uniform mat4 MV;
 uniform vec3 LightPosition_worldspace;
-
+uniform bool isTwoTex;
 void main(){
 
 	// Light emission properties
@@ -24,7 +24,12 @@ void main(){
 	float LightPower = 50.0f;
 
 	// Material properties
-	vec4 MaterialDiffuseColor = texture(texture0, UV );
+	vec4 MaterialDiffuseColor;
+	if(isTwoTex){
+    	MaterialDiffuseColor = texture( texture0, UV ) * texture(texture1, UV);
+    }else{
+    	MaterialDiffuseColor = texture( texture0, UV );
+    }
 	vec4 MaterialAmbientColor = vec4(0.1,0.1,0.1,1.0) * MaterialDiffuseColor;
 	vec4 MaterialSpecularColor = vec4(0.3,0.3,0.3,1);
 

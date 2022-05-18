@@ -35,11 +35,13 @@ protected:
     int windowWidth = 1024;
     int windowHeight = 768;
 
+    std::string cubemap_filename[6];
 
 protected:
     void initBuffers();
 
 public:
+
     GLuint FramebufferName;
     GLuint renderbuffer;
     GLuint isTwoTex;
@@ -51,8 +53,6 @@ public:
 
     bool loadTexture( GLuint shaderID, const std::string& texturePath, GLchar *name, int texParam = 0);
     bool loadTexture2( GLuint shaderID, const std::string& texturePath, GLchar *name, int texParam = 0);
-
-
 
     void setTexture(GLuint textureID, GLuint texture);
 
@@ -84,6 +84,17 @@ public:
     glm::mat4 getReflectionMatrix() {return reflectionMatrix;}
 
     void setReflectionVector(glm::vec3 newVector);
+
+    bool Cubemap(GLuint shaderID, GLchar *name, int texParam);
+
+    void CubemapTexture(
+                        const std::string& PosXFilename,
+                        const std::string& NegXFilename,
+                        const std::string& PosYFilename,
+                        const std::string& NegYFilename,
+                        const std::string& PosZFilename,
+                        const std::string& NegZFilename);
+
 };
 
 #endif

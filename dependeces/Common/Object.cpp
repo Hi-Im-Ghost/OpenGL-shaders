@@ -90,6 +90,8 @@ bool Object::initFromFile(const std::string& path, GLuint shaderID, const std::s
 
     return check;
 }
+
+
 bool Object::loadTexture(GLuint shaderID, const std::string& texturePath, GLchar *name, int texParam) {
     bool check = true;
 
@@ -229,8 +231,7 @@ bool Object::loadTexture2(GLuint shaderID, const std::string& texturePath, GLcha
         //glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers
         if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             return false;
-    }
-    else{
+    }else{
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -243,6 +244,46 @@ bool Object::loadTexture2(GLuint shaderID, const std::string& texturePath, GLcha
     return check;
 }
 
+bool Object::Cubemap(GLuint shaderID, GLchar *name, int texParam) {
+    bool check = true;
+
+    this->textureID = glGetUniformLocation(shaderID, name);
+
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
+
+    for (int i = 0; i < 6; i++) {
+        int width, height, nchan;
+        unsigned char* dt = stbi_load(cubemap_filename[i].c_str(), &width, &height, &nchan, 0);
+        std::cout<<cubemap_filename[i].c_str()<<std::endl;
+        std::cout<<GL_TEXTURE_CUBE_MAP_POSITIVE_X + i<<std::endl;
+        if (!dt) {
+            puts("Cannot load Texture");
+            check = false;
+        }
+        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGBA, width, height, 0, GL_RGBA,
+                     GL_UNSIGNED_BYTE, dt);
+        stbi_image_free(dt);
+    }
+    if(texParam==0) {
+        // Filtrowanie BEZ mipmap:
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        // Brak powielania - obcinanie do krawędzi na trzech współrzędnych:
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    }else{
+        // Filtrowanie z mipmap:
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        // Brak powielania - obcinanie do krawędzi na trzech współrzędnych:
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    }
+    return check;
+}
 
 bool Object::initFromArray(std::vector<glm::vec3> vertices, std::vector<glm::vec3> normals,
                                       std::vector<glm::vec2> uvs) {
@@ -264,6 +305,8 @@ bool Object::initFromFile(const std::string& path) {
 
     initBuffers();
     return check;
+
+
 }
 
 void Object::draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bool reflected, int numberTex) {
@@ -274,6 +317,9 @@ void Object::draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bo
         glBindTexture(GL_TEXTURE_2D, texture);
     }else if(0==numberTex)
     {
+        glUniform1i(textureID, 0);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
 
     }else{
     glUniform1i(textureID, 0);
@@ -294,6 +340,7 @@ void Object::draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bo
     glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
     glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
     glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
+
     glBindVertexArray(vao);
 
     MVP = projectionMatrix * viewMatrix * modelMatrix;
@@ -354,6 +401,21 @@ void Object::initBuffers() {
 void Object::setReflectionVector(glm::vec3 newVector) {
     reflectionMatrix = glm::scale(modelMatrix, newVector);
 }
+
+void Object::CubemapTexture(const std::string &PosXFilename, const std::string &NegXFilename,
+                            const std::string &PosYFilename, const std::string &NegYFilename,
+                            const std::string &PosZFilename, const std::string &NegZFilename) {
+
+    cubemap_filename[0] = PosXFilename;
+    cubemap_filename[1] = NegXFilename;
+    cubemap_filename[2] = PosYFilename;
+    cubemap_filename[3] = NegYFilename;
+    cubemap_filename[4] = PosZFilename;
+    cubemap_filename[5] = NegZFilename;
+
+
+}
+
 bool LoadTexture(GLuint shaderID, const std::string& texturePath, GLchar *name,GLint out[2]){
     GLuint textureId ,texture;
     textureId = glGetUniformLocation(shaderID, name);

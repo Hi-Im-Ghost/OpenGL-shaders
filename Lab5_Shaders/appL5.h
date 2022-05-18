@@ -112,6 +112,7 @@ public:
         ModelMatrixID = glGetUniformLocation(programID4, "M");
         lightID = glGetUniformLocation(programID4, "LightPosition_worldspace");
 
+        cube.isTwoTex = glGetUniformLocation(programID, "isTwoTex");
         cube.initFromFile("resource/cube.obj");
         cube.loadTexture(programID, "resource/grass.png", "texture0",0);
         cube.loadTexture2(programID, "resource/uvmap.png", "texture1",0);

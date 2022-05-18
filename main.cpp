@@ -20,9 +20,11 @@ GLFWwindow *window;
 #include "Lab4_textures/appL4.h"
 #include "Lab5_Shaders/appL5.h"
 #include "Lab6_Light/appL6.h"
+#include "Lab8_Cubemap/appL8.h"
+#include "Lab9_BumpMap/appL9.h"
 
 int main() {
-    appL4 app;
+    appL8 app;
     app.setUp();
     do {
         app.update();
