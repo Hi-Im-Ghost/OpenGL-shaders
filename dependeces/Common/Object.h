@@ -31,6 +31,7 @@ protected:
     glm::mat4 viewMatrix;
     glm::mat4 modelMatrix, MVP;
     glm::mat4 reflectionMatrix;
+    glm::vec3 cameraPos;
 
     int windowWidth = 1024;
     int windowHeight = 768;
@@ -79,6 +80,9 @@ public:
 
     void setModelMatrix(glm::mat4 matrix) { modelMatrix = matrix; }
 
+    void setPositionCamera(GLuint shaderID, glm::vec3 CameraPosition) { cameraPos = CameraPosition;
+        glUniform3fv(glGetUniformLocation(shaderID, "CameraPosition"), 1, &cameraPos[0]);}
+
     glm::mat4 getModelMatrix(){return modelMatrix;}
 
     glm::mat4 getReflectionMatrix() {return reflectionMatrix;}
@@ -95,6 +99,8 @@ public:
                         const std::string& PosZFilename,
                         const std::string& NegZFilename);
 
+    void drawSkybox(GLuint MatrixID, GLuint ViewMatrixID,GLuint ModelMatrixID);
+    void drawMapModel(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID);
 };
 
 #endif

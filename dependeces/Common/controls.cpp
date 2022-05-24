@@ -23,6 +23,8 @@ float initialFoV = 45.0f;
 float speed = 3.0f; // 3 units / second
 float mouseSpeed = 0.005f;
 
+// Get mouse position
+double xpos, ypos;
 
 glm::mat4 ViewMatrix;
 glm::mat4 ProjectionMatrix;
@@ -38,6 +40,14 @@ glm::vec3 getPosition(){
     return position;
 }
 
+float getViewX(){
+    return xpos;
+}
+
+float getViewY(){
+    return ypos;
+}
+
 void computeMatricesFromInputs(){
 
 	// glfwGetTime is called only once, the first time this function is called
@@ -47,8 +57,7 @@ void computeMatricesFromInputs(){
 	double currentTime = glfwGetTime();
 	float deltaTime = float(currentTime - lastTime);
 
-	// Get mouse position
-	double xpos, ypos;
+
 	glfwGetCursorPos(window, &xpos, &ypos);
 
 	// Reset mouse position for next frame

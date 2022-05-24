@@ -12,6 +12,7 @@ out vec3 Position_worldspace;
 out vec3 Normal_cameraspace;
 out vec3 EyeDirection_cameraspace;
 out vec3 LightDirection_cameraspace;
+out vec3 Position;
 
 // Values that stay constant for the whole mesh.
 uniform mat4 MVP;
@@ -22,8 +23,8 @@ uniform vec3 LightPosition_worldspace;
 
 void main(){
 
-	// Output position of the vertex, in clip space : MVP * position
-	gl_Position =  MVP * vec4(vertexPosition_modelspace,1);
+    vec4 p = MVP * vec4(vertexPosition_modelspace,1);
+
 
 	// Position of the vertex, in worldspace : M * position
 	Position_worldspace = (M * vec4(vertexPosition_modelspace,1)).xyz;
@@ -37,16 +38,19 @@ void main(){
 	vec3 LightPosition_cameraspace = ( V * vec4(LightPosition_worldspace,1)).xyz;
 	LightDirection_cameraspace = LightPosition_cameraspace + EyeDirection_cameraspace;
 
-	// Normal of the the vertex, in camera space
-	Normal_cameraspace = ( V * M * vec4(vertexNormal_modelspace,0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
 
-    //Normal_cameraspace = mat3(transpose(inverse(M))) * vertexNormal_modelspace;
+
+	// Normal of the the vertex, in camera space
+	//Normal_cameraspace = ( V * M * vec4(vertexNormal_modelspace,0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
+    Normal_cameraspace = mat3(transpose(inverse(M))) * vertexNormal_modelspace;
+
 
 	// UV of the vertex. No special space for this one.
-
-    skybox=vec3(vertexPosition_modelspace.x,vertexPosition_modelspace.y,-vertexPosition_modelspace.z);
 	UV = vertexUV;
 
+	Position = vec3(p);
+    // Output position of the vertex, in clip space : MVP * position
+    gl_Position =  p;
 
 }
 

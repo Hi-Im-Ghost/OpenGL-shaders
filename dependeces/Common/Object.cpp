@@ -309,6 +309,48 @@ bool Object::initFromFile(const std::string& path) {
 
 }
 
+void Object::drawSkybox(GLuint MatrixID,GLuint ViewMatrixID, GLuint ModelMatrixID) {
+//    glUniform1i(textureID, 0);
+//    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
+
+    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+    glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
+    glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
+
+    glDepthMask(GL_FALSE);
+    glBindVertexArray(vao);
+
+    MVP = projectionMatrix * viewMatrix * modelMatrix;
+
+    glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
+    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+
+    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+    glDepthMask(GL_TRUE);
+}
+
+void Object::drawMapModel(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID) {
+
+
+    // Send our transformation to the currently bound shader,
+    // in the "MVP" uniform
+
+    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+    glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
+    glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
+
+    glBindVertexArray(vao);
+
+    MVP = projectionMatrix * viewMatrix * modelMatrix;
+
+    glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
+    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+
+
+    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+}
+
 void Object::draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bool reflected, int numberTex) {
     if(1>=numberTex) {
         glUniform1i(textureID, 0);
@@ -330,9 +372,6 @@ void Object::draw(GLuint MatrixID, GLuint ViewMatrixID, GLuint ModelMatrixID, bo
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture2);
     }
-
-    // Draw as reflected ?
-    //glm::mat4 modelMatrix = (reflected) ? reflectionMatrix : this->modelMatrix;
 
     // Send our transformation to the currently bound shader,
     // in the "MVP" uniform

@@ -13,11 +13,15 @@ private:
     GLuint MatrixID;
     GLuint ViewMatrixID;
     GLuint ModelMatrixID;
+    GLuint MatrixID2;
+    GLuint ViewMatrixID2;
+    GLuint ModelMatrixID2;
     GLuint TextureID;
+    GLuint TextureID1;
     GLuint lightID;
 
     Object cube;
-    Object avatar;
+    Object boat;
 
 public:
 
@@ -33,29 +37,16 @@ public:
 
         glfwPollEvents();
         glfwSetCursorPos(window, 1024 / 2, 768 / 2);
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
         glEnable(GL_DEPTH_TEST);
-        // Accept fragment if it's closer to the camera than the former one
-        glDepthFunc(GL_LESS);
-
-
-        glEnable(GL_BLEND);
-
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
         //SHADER0
-        //programID = LoadShaders("shaders/Cubemap.vertexshader", "shaders/Cubemap.fragmentshader");
-        programID = LoadShaders("shaders/Envirmap.vertexshader", "shaders/Envirmap.fragmentshader");
+        programID = LoadShaders("shaders/Cubemap.vertexshader", "shaders/Cubemap.fragmentshader");
         TextureID = glGetUniformLocation(programID, "texture0");
 
         // Get a handle for our "MVP" uniform
         MatrixID = glGetUniformLocation(programID, "MVP");
-        ViewMatrixID = glGetUniformLocation(programID, "V");
-        ModelMatrixID = glGetUniformLocation(programID, "M");
-        lightID = glGetUniformLocation(programID, "LightPosition_worldspace");
-
 
         cube.initFromFile("resource/cube.obj");
         cube.CubemapTexture("resource/Cubemap_posx.png",
@@ -69,25 +60,34 @@ public:
         cube.scale(glm::vec3(50.0f));
 
 
-        avatar.initFromFile("resource/Avatar.obj");
-        avatar.scale(glm::vec3(0.2f));
+        programID2 = LoadShaders("shaders/Envirmap.vertexshader", "shaders/Envirmap.fragmentshader");
+        TextureID1 = glGetUniformLocation(programID2, "texture0");
+        // Get a handle for our "MVP" uniform
+        MatrixID2 = glGetUniformLocation(programID2, "MVP");
+        ViewMatrixID2 = glGetUniformLocation(programID2, "V");
+        ModelMatrixID2 = glGetUniformLocation(programID2, "M");
+        //avatar.initFromFile("resource/cube.obj");
+        boat.initFromFile("resource/Boat.obj");
+        boat.scale(glm::vec3(0.02f));
+        boat.rotate(glm::vec3(0,1,0),90.0f);
+        //boat.scale(glm::vec3(2.0f));
     }
 
     void update() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(programID);
-        glUniform3f(lightID, 2.0f, 2.0f, 2.0f);
         computeMatricesFromInputs();
-
-        glDepthMask(GL_FALSE);
         cube.setProjectionMatrix(getProjectionMatrix());
         cube.setViewMatrix(getViewMatrix());
-        cube.draw(MatrixID,ViewMatrixID,ModelMatrixID,false,0);
-        glDepthMask(GL_TRUE);
+        cube.drawSkybox(MatrixID,ViewMatrixID,ModelMatrixID);
 
-        avatar.setProjectionMatrix(getProjectionMatrix());
-        avatar.setViewMatrix(getViewMatrix());
-        avatar.draw(MatrixID, ViewMatrixID, ModelMatrixID,false,0);
+        glUseProgram(programID2);
+        computeMatricesFromInputs();
+
+        boat.setProjectionMatrix(getProjectionMatrix());
+        boat.setViewMatrix(getViewMatrix());
+        boat.setPositionCamera(programID2,getPosition());
+        boat.drawMapModel(MatrixID2, ViewMatrixID2, ModelMatrixID2);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
