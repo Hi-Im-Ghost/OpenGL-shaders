@@ -1,7 +1,3 @@
-//
-// Created by cezar on 25.03.2022.
-//
-
 #ifndef UNTITLED3_INITIALIZE_H
 #define UNTITLED3_INITIALIZE_H
 
